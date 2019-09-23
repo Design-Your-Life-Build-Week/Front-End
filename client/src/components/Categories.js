@@ -21,8 +21,8 @@ class Categories extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        currentDate: Date.now();
-        // const newCategory = { name: "this.state.categories.name", dateCreated: currentDate, id: currentDate, starRating: 0 }
+        const currentDate: Date.now();
+        const newCategory = { name: "this.state.categories.name", dateCreated: currentDate, id: currentDate, starRating: 0 }
     }
     render() {
         return (
