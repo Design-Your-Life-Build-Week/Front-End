@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../images/Logo.png';
+
+import Logo from '../images/LandingLogo.png';
+import { ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont, MainFontFamily } from './Styling';
+
 
 // Main Landing Page Wrapper
 const Wrapper = styled.div`
@@ -30,6 +33,7 @@ const TitleWrapper = styled.div`
     justify-content: space-between;
     height: 25vh;
     width: 45%;
+    font-family: ${MainFontFamily};
 `;
 
 // Main Title
@@ -44,18 +48,18 @@ const SubTitle = styled.h3`
 
 // Start Now Button
 const StartButton = styled.button`
-    background-color: lightblue;
-    color: white;
+    background-image: ${ButtonBackground};
+    color: ${ButtonFont};
     font-size: 2.0rem;
     text-align: center;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-radius: 6px;
     margin: 50px 0 0;
 
     :hover{
-        background-color: white;
-        color: lightblue;
+        background-image: ${ButtonHover};
+        color: ${ButtonHoverFont};
     }
 `;
 
