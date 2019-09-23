@@ -3,20 +3,33 @@ import React from 'react';
 class Categories extends React.Component {
     state = {
         categories: [
-            {name: fitness,
-            activities: [],
+            {name: "fitness",
+            activities: [
+                {"name": "Running", dateCreated: "09212019", starRating: 5, id: 456},
+                {"name": "Swimming", dateCreated: "09212019", starRating: 5, id: 456},
+                {"name": "Zumba", dateCreated: "09302019", starRating: 5, id: 456}
+            ],
             dateCreated: '',
-            }
-        ]
+            id: 123
+            },
+        ],
+     
     }
     handleChange = (e) => {
-        this.setState({ ...categories, [e.target.name]: e.target.value});
+        this.setState({ ...this.state.categories, [e.target.name]: e.target.value});
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        currentDate: Date.now();
+        // const newCategory = { name: "this.state.categories.name", dateCreated: currentDate, id: currentDate, starRating: 0 }
     }
     render() {
         return (
 
         <div>
-          {categories.map(category => <h1 category={category} > {category.name} </h1>)}
+            <h1>Your Categories</h1>
+          {this.state.categories.map(category => <h3 category={category} > {category.name} </h3>)}
             <form>
                 <input 
                     name = "catergory"
