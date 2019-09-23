@@ -7,13 +7,9 @@
     "formik": "^1.5.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-<<<<<<< HEAD
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.2"
-=======
     "react-scripts": "3.1.2",
     "styled-components": "^4.4.0"
->>>>>>> aea544579fe069e6805c10817ababe25d825a406
   },
   "scripts": {
     "start": "react-scripts start",
