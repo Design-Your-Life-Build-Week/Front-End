@@ -10,19 +10,26 @@ class Categories extends React.Component {
                 {"name": "Zumba", dateCreated: "09302019", starRating: 5, id: 456}
             ],
             dateCreated: '',
-            id: 123
+            id: 123,
             },
+            
         ],
-     
+        // category: {}?
     }
     handleChange = (e) => {
-        this.setState({ ...this.state.categories, [e.target.name]: e.target.value});
+        this.setState({ ...this.state.categories,  [e.target.name]: e.target.value});
+        console.log(e.target.name)
+        console.log(this.state.categories)
     }
-
-    handleSubmit = (e) => {
+    
+    handleSubmit = (e, newCategory) => {
+        console.log(this.state)
         e.preventDefault();
         const currentDate = Date.now();
-        const newCategory = { name: "this.state.categories.name", dateCreated: currentDate, id: currentDate, starRating: 0 }
+        newCategory = { name: this.state.categories[this.state.categories.length-1].name,  activities: [], dateCreated: currentDate, id: currentDate }
+        console.log(newCategory);
+        this.setState({categories: [...this.state.categories, newCategory]});
+        console.log("updated state", this.state)
     }
     render() {
         return (
@@ -30,7 +37,7 @@ class Categories extends React.Component {
         <div>
             <h1>Your Categories</h1>
           {this.state.categories.map(category => <h3 category={category} > {category.name} </h3>)}
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <input 
                     name = "catergory"
                     value = {this.state.categories.name}
