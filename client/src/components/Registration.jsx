@@ -11,9 +11,11 @@ height:90vh;
 font-size:62.5%;
 align-items:center;
 margin:0 12%;
+min-width:100vh;
 `
 const MeaningfulLife = styled.div `
 font-size:3rem;
+width:45%;
 `
 const ColorDiv = styled.div `
 background:${NavColor};
@@ -26,7 +28,7 @@ display:flex;
 flex-direction:column;
 background:${LoginColor};
 border-radius:2%;
-width:35%;
+max-width:30%;
 margin-left:18%;
 padding:10% 5%;
 

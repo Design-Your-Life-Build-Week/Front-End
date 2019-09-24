@@ -11,11 +11,12 @@ height:90vh;
 font-size:62.5%;
 align-items:center;
 margin:0 12%;
+min-width:100vh;
 
 `
 const WelcomeBack = styled.div `
 font-size:3rem;
-margin-right:4.25%;
+width:45%;
 `
 
 const LoginDiv = styled.div `
@@ -23,10 +24,9 @@ display:flex;
 flex-direction:column;
 background:${LoginColor};
 border-radius:2%;
-width:35%;
-margin-left:20%;
+max-width:30%;
+margin-left:18%;
 padding:10% 5%;
-
 
 `
 const Label = styled.label `
@@ -41,7 +41,6 @@ margin:5% 0;
 `
 
 const Input = styled.input `
-
 color:ghostwhite;
 width:100%;
 font-size:1.75rem;
