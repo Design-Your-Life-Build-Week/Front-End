@@ -1,13 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import ActivityCard from './ActivityCard';
+
+/*
+* PAGE WITH LIST OF ACTIVITIES AND COMPONENT TO ADD MORE
+*/
+
+//Styled Component for Activity Page
+const ActivityWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
 
 const ActivityList = props => {
     // get an array of activity objects - through props or API
     /*========PLACEHOLDER ARRAY========*/
     const activities = [
         {id: 1, title: "Run", text: "My goal is to run 5 miles every week", rating: 3}, 
-        {id: 2, title: "Eat Health", text: "My goal is to eat no more than 2,000 calories on weekdays", rating: 2}
+        {id: 2, title: "Eat Healthy", text: "My goal is to eat no more than 2,000 calories on weekdays", rating: 2}
     ]
 
     /*========FUNCTION TO EDIT ACTIVITY========*/
@@ -21,7 +32,7 @@ const ActivityList = props => {
     }
 
     return (
-        <div>
+        <ActivityWrapper>
         {/*========RETRUN ACTIVITYADDER COMPONENT========*/}
         {/*========MAP THROUGH ARRAY OF CARD OBJECTS========*/}
         {activities.map( activity => (
@@ -33,7 +44,7 @@ const ActivityList = props => {
                 delete={deleteActivity}
             />
         ))}
-        </div>
+        </ActivityWrapper>
     )
 }
 

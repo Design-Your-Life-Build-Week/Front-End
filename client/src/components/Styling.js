@@ -11,3 +11,6 @@ export const ButtonHoverFont = "white";
 
 // Fonts
 export const MainFontFamily = "'Montserrat', sans-serif";
+
+// Cards Styling
+export const CardBackground = 'linear-gradient(to right, #B3EAE8, #F1CCDA)';
