@@ -7,13 +7,15 @@ import { FormBorderColor, MainFontFamily, LoginColor, ButtonBackground, ButtonFo
 const RegistrationBox = styled.div `
 font-family: ${MainFontFamily};
 display:flex;
-height:100%vh;
+height:90vh;
 font-size:62.5%;
 align-items:center;
-margin:8% 12%;
+margin:0 12%;
+
 `
-const MeaningfulLife = styled.div `
+const WelcomeBack = styled.div `
 font-size:3rem;
+margin-right:4.25%;
 `
 
 const LoginDiv = styled.div `
@@ -21,9 +23,10 @@ display:flex;
 flex-direction:column;
 background:${LoginColor};
 border-radius:2%;
-width:40%;
-margin-left:18%;
+width:35%;
+margin-left:20%;
 padding:10% 5%;
+
 
 `
 const Label = styled.label `
@@ -38,8 +41,9 @@ margin:5% 0;
 `
 
 const Input = styled.input `
+
+color:ghostwhite;
 width:100%;
-height:3%;
 font-size:1.75rem;
 border: 4px solid ${FormBorderColor};
 border-radius: 4px;
@@ -88,9 +92,9 @@ const Login = (props) => {
 
 return (
     <RegistrationBox>
-        <MeaningfulLife>
+        <WelcomeBack>
             <h1>Welcome<div>Back.</div></h1>
-        </MeaningfulLife>
+        </WelcomeBack>
         <LoginDiv> 
             <Label>Username</Label>
             <Form onSubmit={handleSubmit}>

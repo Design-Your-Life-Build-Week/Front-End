@@ -7,10 +7,10 @@ import { FormBorderColor, NavColor, MainFontFamily, LoginColor, ButtonBackground
 const RegistrationBox = styled.div `
 font-family: ${MainFontFamily};
 display:flex;
-height:100%vh;
+height:90vh;
 font-size:62.5%;
 align-items:center;
-margin:8% 12%;
+margin:0 12%;
 `
 const MeaningfulLife = styled.div `
 font-size:3rem;
@@ -26,7 +26,7 @@ display:flex;
 flex-direction:column;
 background:${LoginColor};
 border-radius:2%;
-width:40%;
+width:35%;
 margin-left:18%;
 padding:10% 5%;
 
@@ -43,8 +43,8 @@ margin:5% 0;
 `
 
 const Input = styled.input `
+color:ghostwhite;
 width:100%;
-height:3%;
 font-size:1.75rem;
 border: 4px solid ${FormBorderColor};
 border-radius: 4px;
