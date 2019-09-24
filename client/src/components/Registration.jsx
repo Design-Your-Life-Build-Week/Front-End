@@ -32,6 +32,7 @@ const handleSubmit = event => {
     axios
         .post("http://build-your-life.herokuapp.com/api/users/register", user)
         .then( result => {
+                console.log(result)
                localStorage.setItem('token', result.data['token']);
                localStorage.setItem('tokenType', result.data['token_type']);
                console.log("Logged in as", result.data)
