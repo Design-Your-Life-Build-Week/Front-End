@@ -63,11 +63,12 @@ const Login = (props) => {
 
 
     const changeHandler = event => {
-        setUser({...user, [event.target.username]: event.target.value})
+        setUser({...user, [event.target.name]: event.target.value})
         console.log(
             "handleChange",
-            event.target.username,
+            event.target.name,
             event.target.value,
+            
         );
     }
      const handleSubmit = event => {
@@ -83,7 +84,7 @@ const Login = (props) => {
     
     }
 
-     
+    //  console.log(name);
 
 return (
     <RegistrationBox>

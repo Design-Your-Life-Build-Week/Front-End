@@ -7,6 +7,8 @@ import SearchIcon from '../images/search-icon.png';
 import DotsIcon from '../images/dots-icon.png';
 import ToggleIcon from '../images/toggle-icon.png';
 
+import {NavLink} from "react-router-dom";
+
 export default function NavBar() {
     // wrapper for nav bar
     const NavWrapper = styled.div`
@@ -47,10 +49,12 @@ export default function NavBar() {
 
     return (
         <NavWrapper>
-            <LogoWrapper>
-                <Icon src={PageIcon} alt="file icon"/>
-                <LogoTitle>dESign YoUr lIFe</LogoTitle>
-            </LogoWrapper>
+            <NavLink to="/">
+                <LogoWrapper>
+                    <Icon src={PageIcon} alt="file icon"/>
+                    <LogoTitle>dESign YoUr lIFe</LogoTitle>
+                </LogoWrapper>
+            </NavLink> 
             <IconWrapper>
                 <Icon src={SearchIcon} alt="search icon"/>
                 <Icon src={DotsIcon} alt="dots icon"/>

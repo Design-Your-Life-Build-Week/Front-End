@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import {Link } from "react-router-dom";
 import Logo from '../images/LandingLogo.png';
 import { ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont, MainFontFamily } from './Styling';
 
@@ -72,7 +72,9 @@ export default function LandingPage() {
             <TitleWrapper>
                 <Title>Design Your Life</Title>
                 <SubTitle>Who you are - What you do - What you believe</SubTitle>
-                <StartButton>Start Now</StartButton>
+                <Link to="Register"> 
+                    <StartButton>Start Now</StartButton>
+                </Link>
             </TitleWrapper>
         </Wrapper>     
     )
