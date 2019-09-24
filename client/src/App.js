@@ -1,20 +1,22 @@
 import React from 'react';
-import Registration from './components/Registration'
-import './App.css';
+import Registration from './components/Registration';
+import Login from "./components/Login";
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
+import Categories from './components/Categories';
 
 import {Route} from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
-import Categories from './components/Categories';
 
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <NavBar/>
       <Route exact path="/" component={LandingPage} /> 
-      <Route path="/register" component={Registration} />   
+      <Route path="/register" component={Registration} />
+      <Route path="/login" component={Login} />   
       <Route path="/categories" component={Categories} />
 
       {/* <PrivateRoute to="/categories" component={Categories} /> */}
