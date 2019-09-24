@@ -11,3 +11,7 @@ export const ButtonHoverFont = "white";
 
 // Fonts
 export const MainFontFamily = "'Montserrat', sans-serif";
+
+// Login and Register Page
+export const LoginColor = '#5e5a79';
+export const FormBorderColor = 'dodgerblue';
