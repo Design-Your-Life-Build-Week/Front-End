@@ -34,6 +34,7 @@ const handleSubmit = event => {
             .catch(error => {
                 console.log("Something went wrong...", error)
             })
+            props.history.push("/login")
     setUser({
         username: '', password: ''
     })
