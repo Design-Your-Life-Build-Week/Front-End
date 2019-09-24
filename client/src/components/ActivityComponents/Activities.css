@@ -1,0 +1,8 @@
+.activities-hide {
+    display:none;
+}
+
+.activities-open {
+    display:flex;
+    height:500px;
+}
