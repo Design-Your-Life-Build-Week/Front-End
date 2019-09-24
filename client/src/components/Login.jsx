@@ -73,9 +73,17 @@ const Login = (props) => {
      const handleSubmit = event => {
          event.preventDefault();
          console.log(user);
-     }
+         axios
+            .post("http://build-your-life.herokuapp.com/api/users/login")
+            .then(result => {
+            // props.history.push('');
+            console.log ('Logged in', result)
+            setUser({ username: '', password: ''})
+        })
+    
+    }
 
-/////////////////////axios post to allow users to login//////////////////////////
+     
 
 return (
     <RegistrationBox>
