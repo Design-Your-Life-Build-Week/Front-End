@@ -19,3 +19,5 @@ export const CardBackground = 'linear-gradient(to right, #B3EAE8, #F1CCDA)';
 export const LoginColor = '#5e5a79';
 export const FormBorderColor = 'dodgerblue';
 
+// Activity Builder
+export const BuilderBackground = 'whitesmoke';

@@ -2,26 +2,35 @@ import React, { useState } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
 import styled from 'styled-components';
+import Rating from '../Rating';
+import { BuilderBackground } from '../Styling'
+import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
 
 
 const YourActivities = styled.div `
+margin-top:-.25%;
+font-family: ${MainFontFamily};
 
 `
 const H1 = styled.h1 `
 
 `
-const Expand = styled.button `
-
+const CreateNew = styled.button `
+margin:.5% 0 2%;
+font-size:1.25rem;
+border-radius:5px;
+background-image: ${ButtonBackground};
+color: ${ButtonFont};
+    :hover{
+        background-image: ${ButtonHover};
+        color: ${ButtonHoverFont};
+    }
+    
 `
-const HideActivities = styled.div `
-display:none;
-`
 
-const ShowActivities = styled.div `
-display:flex;
-height:500px;
+const PopDownDiv = styled.div `
+padding-bottom: 2%
 `
-
 const ActivityBuilder = () => {
     const [activities, setActivities] = useState([]);
 
@@ -42,10 +51,11 @@ return (
     <YourActivities>
         
         <H1>Your Activities</H1>
-        <Expand onClick={() => setShowText(!showText)}>Create New</Expand>  
-        {showText && <div>
+        <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
+        {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
-        </div>}  
+           {/* <Rating/> */}
+        </PopDownDiv>}  
         <AddActivity activities={activities}/>
     </YourActivities>
 );
