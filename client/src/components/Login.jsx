@@ -75,10 +75,11 @@ const Login = (props) => {
          event.preventDefault();
          console.log(user);
          axios
-            .post("http://build-your-life.herokuapp.com/api/users/login")
+            .post("https://build-your-life.herokuapp.com/api/users/login")
             .then(result => {
-            // props.history.push('');
-            console.log ('Logged in', result)
+            console.log(result)
+                // props.history.push('');
+            localStorage.setItem("token", result.data.payload);    
             setUser({ username: '', password: ''})
         })
     
