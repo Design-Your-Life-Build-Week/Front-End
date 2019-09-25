@@ -91,9 +91,9 @@ const handleSubmit = event => {
                 console.log("Something went wrong...", error)
             })
             props.history.push("/login")
-    setUser({
-        username: '', password: ''
-    })
+            setUser({
+                username: '', password: ''
+            })
     }
 
     return (
