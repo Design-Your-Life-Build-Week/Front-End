@@ -68,32 +68,33 @@ color: ${ButtonFont};
 const Registration = (props) => {
     const [user, setUser] = useState({ "username": '', "password": ''})
 
-const changeHandler = event => {
+    const changeHandler = event => {
 
-    event.preventDefault();
-    setUser({...user, [event.target.name]: event.target.value })
-}
+        event.preventDefault();
+        setUser({...user, [event.target.name]: event.target.value })
+    }
 
 
-const handleSubmit = event => {
-    event.preventDefault();
-    console.log(user);
+    const handleSubmit = event => {
+        event.preventDefault();
+        console.log(user);
 
-    // axiosLoginAuth()
-    axios
-        .post("http://build-your-life.herokuapp.com/api/users/register", user)
-        .then( result => {
-                console.log(result)
-               localStorage.setItem('token', result.data);
-               console.log("Logged in as", result.data)
+        // axiosLoginAuth()
+        axios
+            .post("http://build-your-life.herokuapp.com/api/users/register", user)
+            .then( result => {
+                    console.log(result)
+                localStorage.setItem('token', result.data);
+                console.log("Logged in as", result.data)
+                })
+                .catch(error => {
+                    console.log("Something went wrong...", error)
+                })
+                props.history.push("/login")
+            setUser({
+                username: '', password: ''
             })
-            .catch(error => {
-                console.log("Something went wrong...", error)
-            })
-            props.history.push("/login")
-    setUser({
-        username: '', password: ''
-    })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -122,4 +123,4 @@ const handleSubmit = event => {
 
     
 
-    export default Registration;
+export default Registration;
