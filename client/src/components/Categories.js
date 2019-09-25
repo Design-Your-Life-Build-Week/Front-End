@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { CatergoriesContext } from '../contexts/CategoriesContext';
 import {axiosLoginAuth} from "../utils/axiosLoginAuth";
 
+
+
 const Categories = () => {
     // hooks
     const [state, setState] = useState(data);
