@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { NavColor, MainFontFamily } from './Styling';
+import { NavColor, ButtonBackground, ButtonFont, 
+    ButtonHover, ButtonHoverFont, MainFontFamily } from './Styling';
 import PageIcon from '../images/page-icon.png';
-import SearchIcon from '../images/search-icon.png';
-import DotsIcon from '../images/dots-icon.png';
-import ToggleIcon from '../images/toggle-icon.png';
-
 import {NavLink} from "react-router-dom";
 
 export default function NavBar() {
@@ -19,14 +16,6 @@ export default function NavBar() {
         width: 100%;
         height: 80px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    `;
-
-    // wrapper for icons in top right
-    const IconWrapper = styled.div`
-        display: flex;
-        height: 100%;
-        align-items: center;
-        margin 0 20px 0 0;
     `;
 
     // Icon styling
@@ -47,19 +36,50 @@ export default function NavBar() {
         font-family: ${MainFontFamily};
     `;
 
+    // wrapper for NavItems in top right
+    const NavItemWrapper = styled.div`
+        display: flex;
+        height: 100%;
+        align-items: center;
+        margin 0 20px 0 0;
+    `;
+
+    // Links to Login and Register Pages
+    const NavItem = styled.div`
+        display: flex;
+        width: 100px;
+        height: 50px;
+        background-image: ${ButtonBackground};
+        justify-content: center;
+        align-items: center;
+        color: ${ButtonFont};
+        text-decoration: none;
+        border-radius: 12px;
+        margin 10px;
+        font-size: 1.3rem;
+
+        :hover{
+        background-image: ${ButtonHover};
+        color: ${ButtonHoverFont};
+        }
+    `;
+
     return (
         <NavWrapper>
-            <NavLink to="/">
+            <NavLink style={{textDecoration: "none"}} to="/">
                 <LogoWrapper>
                     <Icon src={PageIcon} alt="file icon"/>
                     <LogoTitle>dESign YoUr lIFe</LogoTitle>
                 </LogoWrapper>
             </NavLink> 
-            <IconWrapper>
-                <Icon src={SearchIcon} alt="search icon"/>
-                <Icon src={DotsIcon} alt="dots icon"/>
-                <Icon src={ToggleIcon} alt="toggle icon"/>
-            </IconWrapper>
+            <NavItemWrapper>
+                <NavLink style={{textDecoration: "none"}} to="/register">
+                    <NavItem>Register</NavItem>
+                </NavLink>
+                <NavLink style={{textDecoration: "none"}} to="/login">
+                    <NavItem>Login</NavItem>
+                </NavLink>
+            </NavItemWrapper>
         </NavWrapper>
     )
 }

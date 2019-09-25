@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import dummData
 import { data } from "../data";
+import CategoryCard from './CategoryCard';
+import { useContext } from "react";
+import { CatergoriesContext } from '../contexts/CategoriesContext';
+import {axiosLoginAuth} from "../utils/axiosLoginAuth";
 
 const Categories = () => {
     // hooks
     const [state, setState] = useState(data);
     const [category, setCategory] = useState({})
-
+    
     const changeHandler = e => {
         setCategory({...category, [e.target.name]:e.target.value});
         console.log('checking category onChange:', category);
     };
 
+    useEffect(() => {
+        axiosLoginAuth()
+            
+    })
     const submitHandler = e => {
         e.preventDefault();
         setState({...state, categories: [...state.categories, category]});
