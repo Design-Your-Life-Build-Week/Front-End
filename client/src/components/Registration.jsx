@@ -83,14 +83,15 @@ const handleSubmit = event => {
     axios
         .post("https://build-your-life.herokuapp.com/api/users/register", user)
         .then( result => {
-                console.log(result)
-               localStorage.setItem('token', result.data);
-               console.log("Logged in as", result.data)
+               alert(result.data.message)
+               if(result.data.message){
+                 props.history.push("/login")
+            } 
             })
             .catch(error => {
-                console.log("Something went wrong...", error)
+                console.log(error)
+                alert("Username already exists please login to continue", error)
             })
-            props.history.push("/login")
             setUser({
                 username: '', password: ''
             })
