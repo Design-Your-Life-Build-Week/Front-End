@@ -42,7 +42,7 @@ return (
     <YourActivities>
         
         <H1>Your Activities</H1>
-        <Expand onClick={() => setShowText(!showText)}>Expand</Expand>  
+        <Expand onClick={() => setShowText(!showText)}>Create New</Expand>  
         {showText && <div>
             <ActivityForm addNewActivity={addNewActivity}/>
         </div>}  
