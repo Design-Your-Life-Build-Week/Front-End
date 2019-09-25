@@ -122,4 +122,4 @@ const handleSubmit = event => {
 
     
 
-    export default Registration;
+export default Registration;
