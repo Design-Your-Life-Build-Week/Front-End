@@ -51,6 +51,13 @@ const CardButton = styled.button`
     }
 `;
 
+//Box for Buttons
+const ButtonBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    heighr: 50px;
+`;
+
 /*========SUPPORTING FUNCTIONS========*/
 // function that allows user to edit card
 function editCard() {
@@ -76,8 +83,10 @@ const ActivityCard = props => {
             </TitleBox>
             <TitleBox>
                 <p>{props.text}</p>
-                <CardButton onClick={editCard}>Edit</CardButton>
-                <CardButton onClick={deleteCard}>Delete</CardButton>
+                <ButtonBox>
+                    <CardButton onClick={editCard}>Edit</CardButton>
+                    <CardButton onClick={deleteCard}>Delete</CardButton>
+                </ButtonBox>
             </TitleBox>
         </CardWrapper>
     )
