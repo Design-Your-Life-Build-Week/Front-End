@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 // import dummData
-import { data } from "../data";
+
 import CategoryCard from './CategoryCard';
-import { useContext } from "react";
-import { CatergoriesContext } from '../contexts/CategoriesContext';
+
+import { CatergoriesContext, CategoriesContext } from '../contexts/CategoriesContext';
 import {axiosLoginAuth} from "../utils/axiosLoginAuth";
 
 const Categories = () => {
     // hooks
-    const [state, setState] = useState(data);
+    const [categories, setCategories] = useState();
     const [category, setCategory] = useState({})
+    
     
     const changeHandler = e => {
         setCategory({...category, [e.target.name]:e.target.value});
@@ -18,35 +19,24 @@ const Categories = () => {
 
     useEffect(() => {
         axiosLoginAuth()
+            .get("https://build-your-life.herokuapp.com/api/categories")
+            .then(res => {
+                console.log(res.data)
+                setCategories(res.data)
+            })
+            .catch(err => console.log(err))
             
     })
-    const submitHandler = e => {
-        e.preventDefault();
-        setState({...state, categories: [...state.categories, category]});
-        console.log('submit fired!');
-    };
 
     return (
-        <div>
-            <h1>Your Categories</h1>
-    
-            <form onSubmit={submitHandler}>
-                {console.log('new state:',state)}
-                <input 
-                type="text"
-                name="name"
-                value={category.name}
-                onChange={changeHandler}
-                placeholder="Category Name"
-                />
-                <button>Add</button>
-            </form>
-            
-            
-            {state.categories.map(i => {
-                return <h1 key={i.id}>{i.name}</h1>
-            })}
-        </div>
+        <CategoriesContext.Provider value={{ categories }} >
+            <div>
+                <h1>Your Categories</h1>            
+                {categories && categories.map(category => {
+                    return <CategoryCard key={category.id} category={category} /> 
+                } )}
+            </div>
+        </CategoriesContext.Provider>
         )
 }
 
