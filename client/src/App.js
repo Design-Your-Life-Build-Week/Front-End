@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
 import Categories from './components/Categories';
+import ActivityList from './components/ActivityList';
 
 import {Route} from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
@@ -18,6 +19,7 @@ function App() {
       <Route path="/register" component={Registration} />
       <Route path="/login" component={Login} />   
       <Route path="/categories" component={Categories} />
+      <Route path="/activities" component={ActivityList} />
 
       {/* <PrivateRoute to="/categories" component={Categories} /> */}
     </div>
