@@ -21,14 +21,11 @@ function App() {
       <Route exact path="/" component={LandingPage} /> 
       <Route path="/register" component={Registration} />
       <Route path="/login" component={Login} />   
-      <Route path="/categories" component={Categories} />
+      <PrivateRoute path="/categories" component={Categories} />
 
-      <Route path="/activitiesBuilder" component={ActivityBuilder} />
+      <PrivateRoute path="/activitiesBuilder" component={ActivityBuilder} />
 
-      <Route path="/activities" component={ActivityList} />
-
-
-      {/* <PrivateRoute to="/categories" component={Categories} /> */}
+      <PrivateRoute path="/activities" component={ActivityList} />
     </div>
   );
 }
