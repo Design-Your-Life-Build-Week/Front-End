@@ -81,7 +81,7 @@ const handleSubmit = event => {
 
     // axiosLoginAuth()
     axios
-        .post("http://build-your-life.herokuapp.com/api/users/register", user)
+        .post("https://build-your-life.herokuapp.com/api/users/register", user)
         .then( result => {
                 console.log(result)
                localStorage.setItem('token', result.data);
@@ -91,9 +91,9 @@ const handleSubmit = event => {
                 console.log("Something went wrong...", error)
             })
             props.history.push("/login")
-    setUser({
-        username: '', password: ''
-    })
+            setUser({
+                username: '', password: ''
+            })
     }
 
     return (
@@ -122,4 +122,4 @@ const handleSubmit = event => {
 
     
 
-    export default Registration;
+export default Registration;
