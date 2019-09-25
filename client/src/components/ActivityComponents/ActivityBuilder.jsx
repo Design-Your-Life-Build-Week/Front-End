@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
 import styled from 'styled-components';
-import './Activities.css'
+
 
 const YourActivities = styled.div `
 
@@ -35,18 +35,21 @@ const ActivityBuilder = () => {
         setActivities([...activities, newActivity]);
     };
 
-    
+
+    const [showText, setShowText] = useState(false);
+
 return (
     <YourActivities>
         
         <H1>Your Activities</H1>
-        <Expand>Expand</Expand>  
-        <div className="activities">
+        <Expand onClick={() => setShowText(!showText)}>Expand</Expand>  
+        {showText && <div>
             <ActivityForm addNewActivity={addNewActivity}/>
-        </div>  
+        </div>}  
         <AddActivity activities={activities}/>
     </YourActivities>
 );
+
 
 
 
