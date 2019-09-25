@@ -66,7 +66,7 @@ const ActivityForm = props => {
     setActivity({ activity: "", description: "", rating: "" });
   };
 
-  //////////// axios stuff
+  
   return (
     <ActivityFormDiv>
         <form onSubmit={submitForm}>
@@ -106,6 +106,8 @@ const ActivityForm = props => {
         </form>
     </ActivityFormDiv>    
   );
+
+
 };
 
 export default ActivityForm;

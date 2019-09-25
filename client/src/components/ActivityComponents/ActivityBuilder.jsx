@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { CategoriesContext } from '../../contexts/CategoriesContext';
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
+import SavedActivities from './SavedActivities';
 import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, LoginColor, ButtonHover, ButtonHoverFont } from '../Styling'
 import { axiosLoginAuth } from "../../utils/axiosLoginAuth";
@@ -55,6 +56,7 @@ const ActivityBuilder = () => {
 
     const [showText, setShowText] = useState(false);
 
+   
 return (
     <YourActivities>
         
@@ -63,7 +65,9 @@ return (
         {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
         </PopDownDiv>}  
+        <SavedActivities/>
         <AddActivity activities={activities}/>
+      
     </YourActivities>
 );
 
