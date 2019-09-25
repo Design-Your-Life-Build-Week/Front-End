@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 import Categories from './components/Categories';
 
 import ActivityBuilder from './components/ActivityComponents/ActivityBuilder'
- ActivityList from './components/ActivityList';
+import ActivityList from './components/ActivityList';
 
 
 import {Route} from 'react-router-dom';
