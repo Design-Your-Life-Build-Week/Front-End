@@ -16,15 +16,17 @@ const CardWrapper = styled.div`
     display: flex;
     border-radius: 6px;
     margin: 20px;
-    width: 400px;
+    width: 350px;
     font-family: ${MainFontFamily};
     background-image: ${CardBackground};
+    
+    
 }`;
 
 // Title and Rating Wrapper
 const TitleBox = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction:row;
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-between;
@@ -57,20 +59,6 @@ const ButtonBox = styled.div`
     flex-direction: column;
     heighr: 50px;
 `;
-
-/*========SUPPORTING FUNCTIONS========*/
-// function that allows user to edit card
-function editCard() {
-    //TO DO
-    console.log("Edit Card");
-}
-
-// function that deletes the card
-function deleteCard() {
-    //TO DO
-    console.log("Delete Card");
-}
-
 
 /*========DEFAULT FUNCTION========*/
 
