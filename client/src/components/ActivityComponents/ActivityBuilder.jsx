@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
 import styled from 'styled-components';
-import Rating from '../Rating';
-import { BuilderBackground } from '../Styling'
-import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
+import { MainFontFamily, ButtonBackground, ButtonFont, LoginColor, ButtonHover, ButtonHoverFont } from '../Styling'
 
 
 const YourActivities = styled.div `
@@ -30,6 +28,11 @@ color: ${ButtonFont};
 
 const PopDownDiv = styled.div `
 padding-bottom: 2%
+width:50%;
+margin: 0 25%;
+background:${LoginColor};
+border-radius:5px;
+color:ghostwhite;
 `
 const ActivityBuilder = () => {
     const [activities, setActivities] = useState([]);
@@ -54,7 +57,6 @@ return (
         <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
         {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
-           {/* <Rating/> */}
         </PopDownDiv>}  
         <AddActivity activities={activities}/>
     </YourActivities>
