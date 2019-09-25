@@ -77,7 +77,6 @@ const changeHandler = event => {
 
 const handleSubmit = event => {
     event.preventDefault();
-    console.log(user);
 
     // axiosLoginAuth()
     axios

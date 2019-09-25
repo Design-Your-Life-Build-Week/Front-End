@@ -67,23 +67,20 @@ const Login = (props) => {
 
     const changeHandler = event => {
         setUser({...user, [event.target.name]: event.target.value})
-        console.log(
-            "handleChange",
-            event.target.name,
-            event.target.value,
-            
-        );
     }
      const handleSubmit = event => {
          event.preventDefault();
          console.log(user);
          axios
-            .post("https://build-your-life.herokuapp.com/api/users/login")
+            .post("https://build-your-life.herokuapp.com/api/users/login", user)
             .then(result => {
             console.log(result)
-                // props.history.push('');
-            localStorage.setItem("token", result.data.payload);    
+            localStorage.setItem("token", result.data.token);    
+            if(result.data.token){
+                props.history.push("/categories")
+            }
             setUser({ username: '', password: ''})
+            alert(result.data.message)
         })
     
     }
