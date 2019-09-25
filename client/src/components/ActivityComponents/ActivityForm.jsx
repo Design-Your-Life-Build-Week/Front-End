@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
+import axios from 'axios';
+
 
 const ActivityFormDiv = styled.div `
 font-family: ${MainFontFamily};
@@ -18,23 +20,27 @@ const ActivityDiv = styled.div `
 display:flex;
 `
 const Input = styled.input `
-width:20%
+width:40%
 font-size:1.5rem;
+margin: 5% 0;
 `
 
 const Label = styled.label `
 font-size:1.5rem;
+margin-top:10%;
 `
 
 const Textarea = styled.textarea `
-width:25%;
+width:40%;
 margin-bottom: 4%;
 font-size:1.5rem;
+margin: 5% 0;
 
 `
 const Button = styled.button `
 font-size:1.25rem;
 border-radius:5px;
+margin-top:2%;
 background-image: ${ButtonBackground};
 color: ${ButtonFont};
     :hover{
@@ -60,6 +66,7 @@ const ActivityForm = props => {
     setActivity({ activity: "", description: "", rating: "" });
   };
 
+  //////////// axios stuff
   return (
     <ActivityFormDiv>
         <form onSubmit={submitForm}>
@@ -84,7 +91,7 @@ const ActivityForm = props => {
                   />
                 </LabelOverInput>
                 <LabelOverInput>
-                  <Label htmlFor="title">Rating 1-5, 5 being best</Label>
+                  <Label htmlFor="title">Rating 1-5, <div>5 being best</div></Label>
                   <Input
                       id="rating"
                       type="text"
