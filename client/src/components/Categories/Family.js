@@ -79,8 +79,7 @@ const ButtonBox = styled.div`
 const Family = props => {
     const [activities, setActivities] = useState([]);
     
-     
-    useEffect(() => {
+     const getData = () => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
         .then(res => {
@@ -94,6 +93,9 @@ const Family = props => {
             })
             .catch(err => console.log(err))
             
+     }
+    useEffect(() => {
+       getData();
     }, [])
 
     console.log(activities)
@@ -106,7 +108,7 @@ const Family = props => {
         <CardWrapper>
             <TitleBox>
    
-            {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities}  /> ))}
+            {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities} getData={getData}  /> ))}
 
             </TitleBox>
             
