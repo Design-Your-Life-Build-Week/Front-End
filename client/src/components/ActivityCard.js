@@ -55,7 +55,6 @@ const CardButton = styled.button`
 const ButtonBox = styled.div`
     display: flex;
     flex-direction: column;
-    heighr: 50px;
 `;
 
 /*========SUPPORTING FUNCTIONS========*/

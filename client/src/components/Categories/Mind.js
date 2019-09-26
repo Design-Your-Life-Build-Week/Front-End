@@ -9,7 +9,11 @@ import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
-
+    import Categories from '../Categories';
+    import AddActivity from '../ActivityComponents/AddActivity';
+    import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+    import {Link} from "react-router-dom";
+    import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -78,10 +82,13 @@ const ButtonBox = styled.div`
 
 /*========DEFAULT FUNCTION========*/
 
+
+
 const Mind = props => {
     const [activities, setActivities] = useState([]);
-    
-     const getData = () => {
+
+   
+    const getData = () => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
         .then(res => {
@@ -94,7 +101,7 @@ const Mind = props => {
          
             })
             .catch(err => console.log(err))
-            
+
      }
         useEffect(() => {
             axiosLoginAuth()
@@ -123,6 +130,33 @@ const Mind = props => {
             </CardWrapper>
             </MoveCard> 
         </ActivitiesContext.Provider>
+=======
+            
+     }
+    useEffect(() => {
+        axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+           setActivities(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
+   
+    return (
+        <ActivitiesContext.Provider value={{activities}}>
+        <MoveCard>
+        <h2>Mind</h2>
+        <CardWrapper>
+            <TitleBox>
+            <ActivityBuilder activities={activities}/>
+            {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+
+            </TitleBox>
+            
+        </CardWrapper>
+        </MoveCard> 
+    </ActivitiesContext.Provider>
+
     )
 }
 
