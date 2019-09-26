@@ -78,13 +78,15 @@ const Family = props => {
         axiosLoginAuth()
             .get("https://build-your-life.herokuapp.com/api/activities")
             .then(res => {
+                console.log(res.data[0].categories_id)
                 console.log(res.data)
-        
+                const categoryActivities = res.data
             })
             .catch(err => console.log(err))
             
     }, [])
-
+    
+    
     return (
         <MoveCard>
         <CardWrapper>
