@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
@@ -75,15 +79,50 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Mind = props => {
-    return (
-        <MoveCard>
-        <CardWrapper>
-            <TitleBox>
-                <h2>Mind</h2>
-            </TitleBox>
+    const [activities, setActivities] = useState([]);
+    
+     const getData = () => {
+        axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+            setActivities(res.data.filter((i)=> {
+                if (i.categories_id === 5) {
+                    console.log("filteredstuff", i)
+                    return (i)
+                }
+            }))
+         
+            })
+            .catch(err => console.log(err))
             
-        </CardWrapper>
-        </MoveCard>
+     }
+        useEffect(() => {
+            axiosLoginAuth()
+            .get("https://build-your-life.herokuapp.com/api/activities")
+            .then(res => {
+               setActivities(res.data)
+                })
+                .catch(err => console.log(err))
+        }, [])
+
+    console.log("props.activities", props.activities)
+   
+
+    
+    return (
+        <ActivitiesContext.Provider value={{activities}}>
+            <MoveCard>
+            <h2>Mind</h2>
+            <CardWrapper>
+                <TitleBox>
+                <ActivityBuilder activities={activities}/>
+                {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+
+                </TitleBox>
+                
+            </CardWrapper>
+            </MoveCard> 
+        </ActivitiesContext.Provider>
     )
 }
 
