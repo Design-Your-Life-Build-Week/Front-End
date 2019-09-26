@@ -74,7 +74,7 @@ const ButtonBox = styled.div`
 
 /*========DEFAULT FUNCTION========*/
 
-const CategoryCard = props => {
+const Physical = props => {
     return (
         <MoveCard>
         <CardWrapper>
@@ -87,7 +87,4 @@ const CategoryCard = props => {
     )
 }
 
-export default CategoryCard;
-
-
-
+export default Physical;
