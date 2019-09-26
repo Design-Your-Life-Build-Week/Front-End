@@ -12,6 +12,14 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 
 /*========STYLING========*/
 // Category Card Wrapper
+const MoveCard = styled.div`
+  display:inline-block;
+  
+`
+const H1 = styled.h1`
+    color:pink;
+`
+
 const CardWrapper = styled.div`
     display: flex;
     border-radius: 6px;
@@ -26,13 +34,14 @@ const CardWrapper = styled.div`
 // Title and Rating Wrapper
 const TitleBox = styled.div`
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     font-size: 1.2rem;
+    color:purple;
 `;
 
 // Edit and Delete Button Styling
@@ -56,7 +65,7 @@ const CardButton = styled.button`
 //Box for Buttons
 const ButtonBox = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     heighr: 50px;
 `;
 
@@ -64,12 +73,14 @@ const ButtonBox = styled.div`
 
 const CategoryCard = props => {
     return (
+        <MoveCard>
         <CardWrapper>
             <TitleBox>
                 <h2>{props.category.name}</h2>
             </TitleBox>
             
         </CardWrapper>
+        </MoveCard>
     )
 }
 
