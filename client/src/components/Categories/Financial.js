@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
@@ -75,13 +77,35 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Financial = props => {
+    const [activities, setActivities] = useState([]);
+    
+    const getData = () => {
+       axiosLoginAuth()
+       .get("https://build-your-life.herokuapp.com/api/activities")
+       .then(res => {
+           setActivities(res.data.filter((i)=> {
+               if (i.categories_id === 4) {
+                   return (i)
+               }
+           }))
+          
+        
+           })
+           .catch(err => console.log(err))
+           
+    }
+   useEffect(() => {
+      getData();
+   }, [])
+
+   console.log(activities)
     return (
         <MoveCard>
+            <h2>Financial</h2>
         <CardWrapper>
             <TitleBox>
-                <h2>Financial</h2>
+                {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities} getData={getData}  /> ))}
             </TitleBox>
-            
         </CardWrapper>
         </MoveCard>
     )

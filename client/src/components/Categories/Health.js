@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
@@ -75,6 +76,29 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Health= props => {
+    const [activities, setActivities] = useState([]);
+    
+    const getData = () => {
+       axiosLoginAuth()
+       .get("https://build-your-life.herokuapp.com/api/activities")
+       .then(res => {
+           setActivities(res.data.filter((i)=> {
+               if (i.categories_id === 3) {
+                   return (i)
+               }
+           }))
+          
+        
+           })
+           .catch(err => console.log(err))
+           
+    }
+   useEffect(() => {
+      getData();
+   }, [])
+
+   console.log(activities)
+
     return (
         <MoveCard>
         <CardWrapper>
