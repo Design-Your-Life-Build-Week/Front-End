@@ -8,6 +8,7 @@ import Categories from '../Categories';
 import AddActivity from '../ActivityComponents/AddActivity';
 import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 import {Link} from "react-router-dom";
+import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -85,35 +86,42 @@ const Family = props => {
         .then(res => {
             setActivities(res.data.filter((i)=> {
                 if (i.categories_id === 3) {
+                    console.log("filteredstuff", i)
                     return (i)
                 }
             }))
-           
          
             })
             .catch(err => console.log(err))
             
      }
-    useEffect(() => {
-       getData();
-    }, [])
+        useEffect(() => {
+            axiosLoginAuth()
+            .get("https://build-your-life.herokuapp.com/api/activities")
+            .then(res => {
+               setActivities(res.data)
+                })
+                .catch(err => console.log(err))
+        }, [])
 
-    console.log(activities)
+    console.log("props.activities", props.activities)
    
 
     
     return (
-        <MoveCard>
-        <h2>Family</h2>
-        <CardWrapper>
-            <TitleBox>
-   
-            {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+        <ActivitiesContext.Provider value={{activities}}>
+            <MoveCard>
+            <h2>Family</h2>
+            <CardWrapper>
+                <TitleBox>
+                <ActivityBuilder activities={activities}/>
+                {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
 
-            </TitleBox>
-            
-        </CardWrapper>
-        </MoveCard> 
+                </TitleBox>
+                
+            </CardWrapper>
+            </MoveCard> 
+        </ActivitiesContext.Provider>
     )
 }
 
