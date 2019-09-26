@@ -103,19 +103,19 @@ const Family = props => {
                 })
                 .catch(err => console.log(err))
         }, [])
+       
 
-    console.log("props.activities", props.activities)
    
 
     
     return (
-        <ActivitiesContext.Provider value={{activities}}>
+        <ActivitiesContext.Provider value={{activities, getData }}>
             <MoveCard>
             <h2>Family</h2>
             <CardWrapper>
                 <TitleBox>
                 <ActivityBuilder activities={activities}/>
-                {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+                <AddActivity />
 
                 </TitleBox>
                 

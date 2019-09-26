@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage';
 import NavBar from './components/NavBar';
 import Categories from './components/Categories';
 import Family from './components/Categories/Family';
-
+import Financial from './components/Categories/Financial';
 import ActivityBuilder from './components/ActivityComponents/ActivityBuilder'
 import ActivityList from './components/ActivityList';
 
@@ -26,6 +26,7 @@ function App() {
       <PrivateRoute exact path="/categories" component={Categories} />
       
       <PrivateRoute exact path="/family" component={Family} />
+      <PrivateRoute exact path="/financial" component={Financial} />
       <PrivateRoute path="/add" component={AddActivity} />
       <PrivateRoute path="/activityBuilder" component={ActivityBuilder} />
 

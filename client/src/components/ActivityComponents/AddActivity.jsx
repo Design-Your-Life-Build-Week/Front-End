@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Rating from '../Rating';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground }
     from '../Styling';
+import { ActivitiesContext } from '../../contexts/ActivitiesContext';
+import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
 
 const ActivityCards = styled.div `
     display:flex;
@@ -58,33 +60,40 @@ function editCard() {
 }
 
 // function that deletes the card
-function deleteCard() {
-  //TO DO
-  console.log("Delete Card");
+function deleteCard(id) {
+  axiosLoginAuth()
+  .delete(`https://build-your-life.herokuapp.com/api/activities/${id}`)
+  .then(res =>window.location.reload())
+  .catch(err => console.log(err))
+
 }
 
 
 /*========DEFAULT FUNCTION========*/
 
 const AddActivity = props => {
+    const {activities } = useContext(ActivitiesContext);
+
+    console.log(activities)
   return (
     <>
     <ActivityCards>
-
-
-      
+                {activities.map(activity => (
             <CardWrapper>
-                <TitleBox>
-                    <h2>{props.activities.activity_name}</h2>
-                    <p>{props.activities.reflections}</p>
-                    <Rating activities = {props.activities.rating}/>
-                </TitleBox>
-                <TitleBox>
-                    <p>{props.activities.text}</p>
-                    <CardButton onClick={editCard}>Edit</CardButton>
-                    <CardButton onClick={deleteCard}>Delete</CardButton>
-                </TitleBox>
+
+                        <TitleBox>
+                            <h2>{activity.activity_name}</h2>
+                            <p>{activity.reflections}</p>
+                            <Rating activityRating = {activity.rating}/>
+                        </TitleBox>
+                        <TitleBox>
+                            <p>{activity.text}</p>
+                            <CardButton onClick={editCard}>Edit</CardButton>
+                            <CardButton onClick={() => deleteCard(activity.id)}>Delete</CardButton>
+                        </TitleBox> 
+
             </CardWrapper>
+            ))}
     
       </ActivityCards>
           
