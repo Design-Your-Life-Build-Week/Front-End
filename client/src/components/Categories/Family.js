@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-
-import Rating from './Rating';
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
-    from './Styling';
+    from '../Styling';
 
 /*
 * RETURNS A CARD OF EACH ACTIVITY
@@ -85,12 +84,12 @@ const Family = props => {
             .catch(err => console.log(err))
             
     }, [])
-    
+
     return (
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                <h2>{props.category.name}</h2>
+                <h2>Family</h2>
             </TitleBox>
             
         </CardWrapper>
