@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import dummData
-
+import { Link } from "react-router-dom";
 import CategoryCard from './CategoryCard';
+
 import styled from 'styled-components';
 import { CatergoriesContext, CategoriesContext } from '../contexts/CategoriesContext';
 import {axiosLoginAuth} from "../utils/axiosLoginAuth";
@@ -18,13 +19,9 @@ const H1 = styled.h1`
 const Categories = () => {
     // hooks
     const [categories, setCategories] = useState();
-    const [category, setCategory] = useState({})
-    
-    
-    const changeHandler = e => {
-        setCategory({...category, [e.target.name]:e.target.value});
-        console.log('checking category onChange:', category);
-    };
+    const [physicalCategories, setPhysicalCategories] = useState();
+    const [personalCategories, setPersonalCategories] = useState();
+    const [workCategories, setWorkCategories] = useState();
 
     useEffect(() => {
         axiosLoginAuth()
@@ -32,17 +29,27 @@ const Categories = () => {
             .then(res => {
                 console.log(res.data)
                 setCategories(res.data)
+                setPhysicalCategories(res.data[0])
+                console.log(physicalCategories)
             })
             .catch(err => console.log(err))
             
-    })
+    }, [])
 
     return (
         <CategoriesContext.Provider value={{ categories }} >
             <div>
-                <H1>Your Categories</H1>            
+                <H1>Your Categories</H1> 
+                <Physical />
+                <Healt />
+                <Family /> 
+                <Spiritual />
+                <Personal />
+                <Mind />
+                <Work />
+                <Financial />   
                 {categories && categories.map(category => {
-                    return <CategoryCard key={category.id} category={category} /> 
+                    return <Link to="/activityBuilder" key={category.id}><CategoryCard key={category.id} category={category} /></Link> 
                 } )}
             </div>
         </CategoriesContext.Provider>

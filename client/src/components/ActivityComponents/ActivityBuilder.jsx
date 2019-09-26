@@ -38,6 +38,8 @@ border-radius:5px;
 color:ghostwhite;
 `
 const ActivityBuilder = () => {
+
+
     const [activities, setActivities] = useState([]);
 
     const addNewActivity = activity => {
@@ -47,7 +49,9 @@ const ActivityBuilder = () => {
             description: activity.description,
             rating: activity.rating
         };
+     
         setActivities([...activities, newActivity]);
+        
     };
 
 

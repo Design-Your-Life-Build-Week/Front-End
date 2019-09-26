@@ -23,7 +23,7 @@ function App() {
       <Route path="/login" component={Login} />   
       <PrivateRoute path="/categories" component={Categories} />
 
-      <PrivateRoute path="/activitiesBuilder" component={ActivityBuilder} />
+      <PrivateRoute path="/activityBuilder" component={ActivityBuilder} />
 
       <PrivateRoute path="/activities" component={ActivityList} />
     </div>
