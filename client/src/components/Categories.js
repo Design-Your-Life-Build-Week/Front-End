@@ -49,14 +49,14 @@ const Categories = () => {
         <CategoriesContext.Provider value={{ categories }} >
             <div>
                 <H1>Your Categories</H1> 
-                <Physical />
-                <Health />
+                {/* <Physical />
+                <Health /> */}
                 <Family /> 
-                <Spiritual />
+                {/* <Spiritual />
                 <Personal />
                 <Mind />
                 <Work />
-                <Financial />   
+                <Financial />    */}
             </div>
         </CategoriesContext.Provider>
         )

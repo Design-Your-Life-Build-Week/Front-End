@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Rating from './Rating';
+
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
-    from './Styling';
+    from '../Styling';
 
 /*
 * RETURNS A CARD OF EACH ACTIVITY
