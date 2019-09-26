@@ -1,11 +1,12 @@
-import React, { useState, useContext } from "react";
-import { CategoriesContext } from '../../contexts/CategoriesContext';
+import React, { useState, useEffect } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
 import SavedActivities from './SavedActivities';
 import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, LoginColor, ButtonHover, ButtonHoverFont } from '../Styling'
-import { axiosLoginAuth } from "../../utils/axiosLoginAuth";
+import axios from 'axios';
+
+
 
 const YourActivities = styled.div `
 margin-top:-.25%;
@@ -48,7 +49,7 @@ const ActivityBuilder = () => {
             description: activity.description,
             rating: activity.rating
         };
-        axiosLoginAuth.post("")
+     
         setActivities([...activities, newActivity]);
         
     };

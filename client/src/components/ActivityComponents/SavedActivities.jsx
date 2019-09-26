@@ -88,6 +88,7 @@ const SavedActivities = (props) => {
         .then(response => {
            console.log(response)
             const savedActivity = response.data;
+            
             setSavedActivity(savedActivity)
             console.log(savedActivity[0]);
         })
