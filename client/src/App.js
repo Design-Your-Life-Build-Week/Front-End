@@ -14,6 +14,7 @@ import {Route} from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
 
 import './App.css';
+import AddActivity from './components/ActivityComponents/AddActivity';
 
 function App() {
   return (
@@ -22,10 +23,10 @@ function App() {
       <Route exact path="/" component={LandingPage} /> 
       <Route path="/register" component={Registration} />
       <Route path="/login" component={Login} />   
-      <PrivateRoute path="/categories" component={Categories} />
+      <PrivateRoute exact path="/categories" component={Categories} />
       
-      <PrivateRoute path="/family" component={Family} />
-      
+      <PrivateRoute exact path="/family" component={Family} />
+      <PrivateRoute path="/add" component={AddActivity} />
       <PrivateRoute path="/activityBuilder" component={ActivityBuilder} />
 
       <PrivateRoute path="/activities" component={ActivityList} />

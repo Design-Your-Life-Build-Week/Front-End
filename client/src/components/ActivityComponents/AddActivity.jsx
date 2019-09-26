@@ -67,7 +67,6 @@ function deleteCard() {
 /*========DEFAULT FUNCTION========*/
 
 const AddActivity = props => {
-  console.log(props)
   return (
     <>
     <ActivityCards>
