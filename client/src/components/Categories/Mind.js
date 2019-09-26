@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
-
+    import Categories from '../Categories';
+    import AddActivity from '../ActivityComponents/AddActivity';
+    import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+    import {Link} from "react-router-dom";
+    import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -74,16 +78,49 @@ const ButtonBox = styled.div`
 
 /*========DEFAULT FUNCTION========*/
 
+
+
 const Mind = props => {
+    const [activities, setActivities] = useState([]);
+   
+    const getData = () => {
+        axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+            setActivities(res.data.filter((i)=> {
+                if (i.categories_id === 5) {
+                    console.log("filteredstuff", i)
+                    return (i)
+                }
+            }))
+         
+            })
+            .catch(err => console.log(err))
+            
+     }
+    useEffect(() => {
+        axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+           setActivities(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
+   
     return (
+        <ActivitiesContext.Provider value={{activities}}>
         <MoveCard>
+        <h2>Mind</h2>
         <CardWrapper>
             <TitleBox>
-                <h2>Mind</h2>
+            <ActivityBuilder activities={activities}/>
+            {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+
             </TitleBox>
             
         </CardWrapper>
-        </MoveCard>
+        </MoveCard> 
+    </ActivitiesContext.Provider>
     )
 }
 

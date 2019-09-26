@@ -4,12 +4,18 @@ import Rating from '../Rating';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground }
     from '../Styling';
+
 import { ActivitiesContext } from '../../contexts/ActivitiesContext';
 import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
+
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
+
 
 const ActivityCards = styled.div `
     display:flex;
     flex-wrap:wrap;
+    justify-content:space-evenly
+
 `
 
 // Activity Card Wrapper
@@ -60,12 +66,12 @@ function editCard() {
 }
 
 // function that deletes the card
+
 function deleteCard(id) {
   axiosLoginAuth()
   .delete(`https://build-your-life.herokuapp.com/api/activities/${id}`)
   .then(res =>window.location.reload())
   .catch(err => console.log(err))
-
 }
 
 
