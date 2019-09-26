@@ -75,11 +75,12 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Physical = props => {
+    console.log(props)
     return (
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                <h2>{props.category.name}</h2>
+                <h2>Physical</h2>
             </TitleBox>
             
         </CardWrapper>

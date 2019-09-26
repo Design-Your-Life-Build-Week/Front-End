@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
+import Categories from '../Categories';
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 
 /*
 * RETURNS A CARD OF EACH ACTIVITY
@@ -74,12 +77,23 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Family = props => {
+    const [activities, setActivities] = useState();
+    
+     
     useEffect(() => {
         axiosLoginAuth()
-            .get("https://build-your-life.herokuapp.com/api/activities")
-            .then(res => {
-                console.log(res.data)
-        
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+
+            console.log(res)
+      
+            setActivities(res.data.filter((i)=> {
+                if (i.categories_id == 3) {
+                    return (i)
+                }
+            }))
+           
+         
             })
             .catch(err => console.log(err))
             
@@ -87,13 +101,14 @@ const Family = props => {
 
     return (
         <MoveCard>
+        <h2>Family</h2>
         <CardWrapper>
             <TitleBox>
-                <h2>Family</h2>
+            {activities && activities.map((activities => <AddActivity key={activities.id} activities={activities} /> ))}
             </TitleBox>
             
         </CardWrapper>
-        </MoveCard>
+        </MoveCard> 
     )
 }
 
