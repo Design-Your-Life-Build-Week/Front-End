@@ -78,7 +78,7 @@ return (
             <ActivityForm addNewActivity={addNewActivity}/>
         </PopDownDiv>}  
         {/* <SavedActivities/> */}
-        <AddActivity activities={props.activities}/>
+        {/* <AddActivity activities={props.activities}/> */}
       
     </YourActivities>
 );
