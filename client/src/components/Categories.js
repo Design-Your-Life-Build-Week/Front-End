@@ -27,38 +27,44 @@ const H1 = styled.h1`
 
 const Categories = () => {
     // hooks
-    const [categories, setCategories] = useState();
-    const [physicalCategories, setPhysicalCategories] = useState();
-    const [personalCategories, setPersonalCategories] = useState();
-    const [workCategories, setWorkCategories] = useState();
+    const [physical, setPhysical] = useState();
+    const [personal, setPersonal] = useState();
+    const [work, setWork] = useState();
+    const [family, setFamily] = useState();
+    const [financial, setFinancial] = useState();
+    const [mind, setMind] = useState();
+    const [spititual, setSpiritual] = useState();
+
 
     useEffect(() => {
         axiosLoginAuth()
             .get("https://build-your-life.herokuapp.com/api/categories")
             .then(res => {
-                console.log(res.data)
-                setCategories(res.data)
-                setPhysicalCategories(res.data)
-                console.log(physicalCategories)
+                console.log(res)
+                setPhysical(res.data[0])
+                setPersonal(res.data[1])
+                setWork(res.data[2])
+                setFamily(res.data[3])
+                setFinancial(res.data[4])
+                setMind(res.data[5])
+                setSpiritual(res.data[6])
             })
             .catch(err => console.log(err))
             
     }, [])
 
     return (
-        <CategoriesContext.Provider value={{ categories }} >
             <div>
                 <H1>Your Categories</H1> 
-                {/* <Physical />
-                <Health /> */}
-                <Family /> 
-                {/* <Spiritual />
-                <Personal />
-                <Mind />
-                <Work />
-                <Financial />    */}
+                <Physical category={physical} />
+                {/* <Family category={family} /> 
+                <Spiritual category={spititual} />
+                <Personal category={personal} />
+                <Mind category={mind} />
+                <Work category={work}/>
+                <Financial category={financial} />    */}
             </div>
-        </CategoriesContext.Provider>
+
         )
 }
 

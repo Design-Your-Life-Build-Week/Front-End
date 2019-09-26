@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
+import Categories from '../Categories';
 
 /*
 * RETURNS A CARD OF EACH ACTIVITY
@@ -74,26 +75,48 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Family = props => {
+    const [activities, setActivities] = useState();
+    const getActivities = async () => {
+        let res = await axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities");
+
+        let data = res.data.filter((i)=> {
+            if (i.categories_id == 3) {
+                return (i)
+            }
+        })
+       
+        setActivities(data)
+    }
+     
     useEffect(() => {
         axiosLoginAuth()
-            .get("https://build-your-life.herokuapp.com/api/activities")
-            .then(res => {
-                console.log(res.data)
-        
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+
+            console.log(res)
+      
+            setActivities(res.data.filter((i)=> {
+                if (i.categories_id == 3) {
+                    return (i)
+                }
+            }))
+           
+         
             })
             .catch(err => console.log(err))
             
     }, [])
-
+    console.log("activities", activities)
     return (
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                <h2>Family</h2>
+                <h2>{activities && activities.map((i => i.activity_name))}</h2>
             </TitleBox>
             
         </CardWrapper>
-        </MoveCard>
+        </MoveCard> 
     )
 }
 

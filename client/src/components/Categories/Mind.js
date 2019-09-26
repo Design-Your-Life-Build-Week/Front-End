@@ -79,7 +79,7 @@ const Mind = props => {
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                <h2>{props.category.name}</h2>
+                <h2>mind</h2>
             </TitleBox>
             
         </CardWrapper>
