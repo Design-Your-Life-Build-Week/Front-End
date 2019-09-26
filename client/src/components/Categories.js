@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 // import dummData
 import { Link } from "react-router-dom";
-import CategoryCard from './CategoryCard';
+
+
+import Physical from '../components/Categories/Physical';
+import Health from '../components/Categories/Health';
+import Family from '../components/Categories/Family';
+import Spiritual from '../components/Categories/Spiritual';
+import Personal from '../components/Categories/Personal';
+import Mind from '../components/Categories/Mind';
+import Work from '../components/Categories/Work';
+import Financial from '../components/Categories/Financial';
 
 import styled from 'styled-components';
 import { CatergoriesContext, CategoriesContext } from '../contexts/CategoriesContext';
@@ -29,7 +38,7 @@ const Categories = () => {
             .then(res => {
                 console.log(res.data)
                 setCategories(res.data)
-                setPhysicalCategories(res.data[0])
+                setPhysicalCategories(res.data)
                 console.log(physicalCategories)
             })
             .catch(err => console.log(err))
@@ -41,16 +50,13 @@ const Categories = () => {
             <div>
                 <H1>Your Categories</H1> 
                 <Physical />
-                <Healt />
+                <Health />
                 <Family /> 
                 <Spiritual />
                 <Personal />
                 <Mind />
                 <Work />
                 <Financial />   
-                {categories && categories.map(category => {
-                    return <Link to="/activityBuilder" key={category.id}><CategoryCard key={category.id} category={category} /></Link> 
-                } )}
             </div>
         </CategoriesContext.Provider>
         )
