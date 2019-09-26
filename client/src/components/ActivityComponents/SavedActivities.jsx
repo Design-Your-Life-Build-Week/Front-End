@@ -10,6 +10,8 @@ import Rating from '../Rating';
 const ActivityCards = styled.div `
     display:flex;
     flex-wrap:wrap;
+    justify-content:space-evenly
+;
 `
 
 // Activity Card Wrapper

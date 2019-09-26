@@ -11,6 +11,7 @@ import axios from 'axios';
 const YourActivities = styled.div `
 margin-top:-.25%;
 font-family: ${MainFontFamily};
+height:2000px;
 
 `
 const H1 = styled.h1 `

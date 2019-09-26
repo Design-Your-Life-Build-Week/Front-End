@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
-import axios from 'axios';
 
 
 const ActivityFormDiv = styled.div `
 font-family: ${MainFontFamily};
 font-size:62.5%;
+
 `
 const LabelOverInput = styled.div `
 display:flex;
@@ -64,7 +64,7 @@ const ActivityForm = props => {
     event.preventDefault();
     props.addNewActivity(activity);
     setActivity({ activity: "", description: "", rating: "" });
-  };
+  }
 
   
   return (
@@ -108,6 +108,6 @@ const ActivityForm = props => {
   );
 
 
-};
-
-export default ActivityForm;
+;
+}
+export default ActivityForm
