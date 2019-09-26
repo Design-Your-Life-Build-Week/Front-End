@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
-import SavedActivities from './SavedActivities';
+// import SavedActivities from './SavedActivities';
 import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, LoginColor, ButtonHover, ButtonHoverFont } from '../Styling'
 import axios from 'axios';
+import { axiosLoginAuth } from "../../utils/axiosLoginAuth";
 
 
 
@@ -37,23 +38,29 @@ background:${LoginColor};
 border-radius:5px;
 color:ghostwhite;
 `
-const ActivityBuilder = () => {
-
-
-    const [activities, setActivities] = useState([]);
+const ActivityBuilder = (props) => {
+    const [activities, setActivities ] = useState([props.activities])
+  console.log(activities)
 
     const addNewActivity = activity => {
         const newActivity = {
-            id: Date.now(),
-            activity: activity.activity,
-            description: activity.description,
-            rating: activity.rating
+            activity_name: activity.activity,
+            reflections: activity.description,
+            starRating: activity.rating,
+            categories_id: activity.categories_id
         };
-     
-        setActivities([...activities, newActivity]);
+        axiosLoginAuth()
+        .post("https://build-your-life.herokuapp.com/api/activities", newActivity)
+        .then(res => {
+            console.log("add RES", res)
+            setActivities([...activities, res]);
+            props.getData()
+        })
+
+        .catch(err => console.log(err))
+    
         
     };
-
 
     const [showText, setShowText] = useState(false);
 
@@ -61,13 +68,13 @@ const ActivityBuilder = () => {
 return (
     <YourActivities>
         
-        <H1>Your Activities</H1>
+        <H1>{props.activities.activity_name}</H1>
         <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
         {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
         </PopDownDiv>}  
-        <SavedActivities/>
-        <AddActivity activities={activities}/>
+        {/* <SavedActivities/> */}
+        <AddActivity activities={props.activities}/>
       
     </YourActivities>
 );
