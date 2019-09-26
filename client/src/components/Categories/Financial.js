@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
+
 import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 import AddActivity from '../ActivityComponents/AddActivity';
 import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
@@ -16,14 +17,10 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 // Category Card Wrapper
 const MoveCard = styled.div`
   display:inline-block;
-  
-  
 `
 const H1 = styled.h1`
     color:pink;
-
 `
-
 const CardWrapper = styled.div`
     display: flex;
     border-radius: 6px;
@@ -31,8 +28,6 @@ const CardWrapper = styled.div`
     width: 350px;
     font-family: ${MainFontFamily};
     background-image: ${CardBackground};
-    
-    
 }`;
 
 // Title and Rating Wrapper
@@ -60,7 +55,6 @@ const CardButton = styled.button`
     border-radius: 8px;
     margin: 5px;
     width: 100px;
-
     :hover{
         background-image: ${ButtonHover};
         color: ${ButtonHoverFont};
@@ -71,7 +65,7 @@ const CardButton = styled.button`
 const ButtonBox = styled.div`
     display: flex;
     flex-direction: row;
-    heighr: 50px;
+    height: 50px;
 `;
 
 /*========DEFAULT FUNCTION========*/
@@ -84,41 +78,37 @@ const Financial = props => {
        .get("https://build-your-life.herokuapp.com/api/activities")
        .then(res => {
            setActivities(res.data.filter((i)=> {
-               if (i.categories_id === 3) {
+               if (i.categories_id === 4) {
                    console.log("filteredstuff", i)
                    return (i)
                }
            }))
-        
            })
            .catch(err => console.log(err))
            
     }
-       useEffect(() => {
-           axiosLoginAuth()
-           .get("https://build-your-life.herokuapp.com/api/activities")
-           .then(res => {
-              setActivities(res.data)
-               })
-               .catch(err => console.log(err))
-       }, [])
 
-   console.log("props.activities", props.activities)
-  
+    useEffect(() => {
+        axiosLoginAuth()
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+            setActivities(res.data)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
+   console.log("props.activities", props.activities);
    
    return (
        <ActivitiesContext.Provider value={{activities, getData }}>
            <MoveCard>
-           <h2>Financial</h2>
-           <CardWrapper>
-               <TitleBox>
-               <ActivityBuilder activities={activities}/>
-               <AddActivity />
-
-               </TitleBox>
-               
-           </CardWrapper>
+                <h2>Financial</h2>
+                <CardWrapper>
+                    <TitleBox>
+                        <ActivityBuilder activities={activities}/>
+                        <AddActivity />
+                    </TitleBox>
+                </CardWrapper>
            </MoveCard> 
        </ActivitiesContext.Provider>
    )
