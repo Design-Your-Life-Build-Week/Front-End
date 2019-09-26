@@ -8,8 +8,6 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 import { ActivitiesContext } from '../../contexts/ActivitiesContext';
 import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
 
-import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
-
 
 const ActivityCards = styled.div `
     display:flex;
