@@ -3,8 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import CategoryCard from './CategoryCard';
 
-import { CategoriesContext } from '../contexts/CategoriesContext';
+import styled from 'styled-components';
+import { CatergoriesContext, CategoriesContext } from '../contexts/CategoriesContext';
 import {axiosLoginAuth} from "../utils/axiosLoginAuth";
+import { ButtonBackground, ButtonFont, ButtonHover, 
+    ButtonHoverFont, MainFontFamily, CardBackground } 
+    from './Styling';
+
+    
+const H1 = styled.h1`
+    color:pink;
+    font-family: ${MainFontFamily};
+`
 
 const Categories = () => {
     // hooks
@@ -29,9 +39,15 @@ const Categories = () => {
     return (
         <CategoriesContext.Provider value={{ categories }} >
             <div>
-                <h1>Your Categories</h1>   
-        
-                 
+                <H1>Your Categories</H1> 
+                <Physical />
+                <Healt />
+                <Family /> 
+                <Spiritual />
+                <Personal />
+                <Mind />
+                <Work />
+                <Financial />   
                 {categories && categories.map(category => {
                     return <Link to="/activityBuilder" key={category.id}><CategoryCard key={category.id} category={category} /></Link> 
                 } )}
