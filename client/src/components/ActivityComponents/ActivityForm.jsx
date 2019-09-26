@@ -65,13 +65,8 @@ const ActivityForm = props => {
   const submitForm = event => {
     event.preventDefault();
     props.addNewActivity(activity);
-<<<<<<< HEAD
-    setActivity({ activity: "", description: "", rating: "" });
-  }
-=======
     setActivity({ activity: "", description: "", rating: "", categories_id: "" });
   };
->>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
 
   
   return (

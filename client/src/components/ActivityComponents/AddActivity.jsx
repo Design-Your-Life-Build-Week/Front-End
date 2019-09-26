@@ -4,6 +4,8 @@ import Rating from '../Rating';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground }
     from '../Styling';
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
+
 
 const ActivityCards = styled.div `
     display:flex;
@@ -60,8 +62,14 @@ function editCard() {
 }
 
 // function that deletes the card
-function deleteCard() {
+function deleteCard(index) {
   //TO DO
+  console.log(index)
+    axiosLoginAuth
+    .delete('https://build-your-life.herokuapp.com/api/activities')
+    .then(response => {
+        response.data.splice()
+    })
   console.log("Delete Card");
 }
 

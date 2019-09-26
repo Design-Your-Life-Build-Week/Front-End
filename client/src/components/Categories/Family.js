@@ -81,13 +81,6 @@ const Family = props => {
     
      const getData = () => {
         axiosLoginAuth()
-<<<<<<< HEAD
-            .get("https://build-your-life.herokuapp.com/api/activities")
-            .then(res => {
-                console.log(res.data[0].categories_id)
-                console.log(res.data)
-                const categoryActivities = res.data
-=======
         .get("https://build-your-life.herokuapp.com/api/activities")
         .then(res => {
             setActivities(res.data.filter((i)=> {
@@ -97,7 +90,6 @@ const Family = props => {
             }))
            
          
->>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
             })
             .catch(err => console.log(err))
             
@@ -105,14 +97,10 @@ const Family = props => {
     useEffect(() => {
        getData();
     }, [])
-<<<<<<< HEAD
-    
-=======
 
     console.log(activities)
    
 
->>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
     
     return (
         <MoveCard>
