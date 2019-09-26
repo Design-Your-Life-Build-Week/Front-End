@@ -5,6 +5,7 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import Rating from '../Rating';
+import Categories from "../Categories";
 
 
 const ActivityCards = styled.div `
@@ -90,6 +91,7 @@ const SavedActivities = (props) => {
         .then(response => {
            console.log(response)
             const savedActivity = response.data;
+      
             setSavedActivity(savedActivity)
             console.log(savedActivity[0]);
         })

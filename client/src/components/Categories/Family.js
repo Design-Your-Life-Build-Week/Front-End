@@ -74,7 +74,18 @@ const ButtonBox = styled.div`
 
 /*========DEFAULT FUNCTION========*/
 
-const CategoryCard = props => {
+const Family = props => {
+    useEffect(() => {
+        axiosLoginAuth()
+            .get("https://build-your-life.herokuapp.com/api/activities")
+            .then(res => {
+                console.log(res.data)
+        
+            })
+            .catch(err => console.log(err))
+            
+    }, [])
+    
     return (
         <MoveCard>
         <CardWrapper>
@@ -87,7 +98,4 @@ const CategoryCard = props => {
     )
 }
 
-export default CategoryCard;
-
-
-
+export default Family;

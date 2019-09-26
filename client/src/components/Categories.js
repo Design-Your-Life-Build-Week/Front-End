@@ -1,52 +1,64 @@
 import React, { useState, useEffect } from 'react';
 // import dummData
-import { data } from "../data";
-import CategoryCard from './CategoryCard';
-import { useContext } from "react";
-import { CatergoriesContext } from '../contexts/CategoriesContext';
+import { Link } from "react-router-dom";
+
+
+import Physical from '../components/Categories/Physical';
+import Health from '../components/Categories/Health';
+import Family from '../components/Categories/Family';
+import Spiritual from '../components/Categories/Spiritual';
+import Personal from '../components/Categories/Personal';
+import Mind from '../components/Categories/Mind';
+import Work from '../components/Categories/Work';
+import Financial from '../components/Categories/Financial';
+
+import styled from 'styled-components';
+import { CatergoriesContext, CategoriesContext } from '../contexts/CategoriesContext';
 import {axiosLoginAuth} from "../utils/axiosLoginAuth";
+import { ButtonBackground, ButtonFont, ButtonHover, 
+    ButtonHoverFont, MainFontFamily, CardBackground } 
+    from './Styling';
+
+    
+const H1 = styled.h1`
+    color:pink;
+    font-family: ${MainFontFamily};
+`
 
 const Categories = () => {
     // hooks
-    const [state, setState] = useState(data);
-    const [category, setCategory] = useState({})
-    
-    const changeHandler = e => {
-        setCategory({...category, [e.target.name]:e.target.value});
-        console.log('checking category onChange:', category);
-    };
+    const [categories, setCategories] = useState();
+    const [physicalCategories, setPhysicalCategories] = useState();
+    const [personalCategories, setPersonalCategories] = useState();
+    const [workCategories, setWorkCategories] = useState();
 
     useEffect(() => {
         axiosLoginAuth()
+            .get("https://build-your-life.herokuapp.com/api/categories")
+            .then(res => {
+                console.log(res.data)
+                setCategories(res.data)
+                setPhysicalCategories(res.data)
+                console.log(physicalCategories)
+            })
+            .catch(err => console.log(err))
             
-    })
-    const submitHandler = e => {
-        e.preventDefault();
-        setState({...state, categories: [...state.categories, category]});
-        console.log('submit fired!');
-    };
+    }, [])
 
     return (
-        <div>
-            <h1>Your Categories</h1>
-    
-            <form onSubmit={submitHandler}>
-                {console.log('new state:',state)}
-                <input 
-                type="text"
-                name="name"
-                value={category.name}
-                onChange={changeHandler}
-                placeholder="Category Name"
-                />
-                <button>Add</button>
-            </form>
-            
-            
-            {state.categories.map(i => {
-                return <h1 key={i.id}>{i.name}</h1>
-            })}
-        </div>
+        <CategoriesContext.Provider value={{ categories }} >
+            <div>
+                <H1>Your Categories</H1> 
+                <Physical />
+                <Health />
+                <Family /> 
+                <Spiritual />
+                <Personal />
+                <Mind />
+                <Work />
+                <Financial />   
+            </div>
+        </CategoriesContext.Provider>
         )
 }
 
