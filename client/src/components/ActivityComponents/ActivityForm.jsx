@@ -66,6 +66,7 @@ const ActivityForm = props => {
     event.preventDefault();
     props.addNewActivity(activity);
     setActivity({ activity: "", description: "", rating: "", categories_id: "" });
+    window.location.reload()
   };
 
   
