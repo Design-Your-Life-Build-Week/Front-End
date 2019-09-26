@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
-    import Categories from '../Categories';
-    import AddActivity from '../ActivityComponents/AddActivity';
-    import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
-    import {Link} from "react-router-dom";
-    import { ActivitiesContext } from "../../contexts/ActivitiesContext";
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -18,12 +16,9 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 // Category Card Wrapper
 const MoveCard = styled.div`
   display:inline-block;
-  
-  
 `
 const H1 = styled.h1`
     color:pink;
-
 `
 
 const CardWrapper = styled.div`
@@ -62,7 +57,6 @@ const CardButton = styled.button`
     border-radius: 8px;
     margin: 5px;
     width: 100px;
-
     :hover{
         background-image: ${ButtonHover};
         color: ${ButtonHoverFont};
@@ -73,12 +67,10 @@ const CardButton = styled.button`
 const ButtonBox = styled.div`
     display: flex;
     flex-direction: row;
-    heighr: 50px;
+    height: 50px;
 `;
 
 /*========DEFAULT FUNCTION========*/
-
-
 
 const Mind = props => {
     const [activities, setActivities] = useState([]);
@@ -93,35 +85,35 @@ const Mind = props => {
                     return (i)
                 }
             }))
-         
             })
             .catch(err => console.log(err))
-            
-     }
+
+    }
+
     useEffect(() => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
         .then(res => {
-           setActivities(res.data)
+            setActivities(res.data)
             })
             .catch(err => console.log(err))
     }, [])
+
+    console.log("props.activities", props.activities)
    
     return (
         <ActivitiesContext.Provider value={{activities}}>
-        <MoveCard>
-        <h2>Mind</h2>
-        <CardWrapper>
-            <TitleBox>
-            <ActivityBuilder activities={activities}/>
-            {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
-
-            </TitleBox>
-            
-        </CardWrapper>
-        </MoveCard> 
-    </ActivitiesContext.Provider>
-    )
+            <MoveCard>
+                <h2>Mind</h2>
+                <CardWrapper>
+                    <TitleBox>
+                        <ActivityBuilder activities={activities}/>
+                        {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+                    </TitleBox>
+                </CardWrapper>
+            </MoveCard> 
+        </ActivitiesContext.Provider>
+   )
 }
 
 export default Mind;
