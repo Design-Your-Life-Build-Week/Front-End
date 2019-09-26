@@ -51,7 +51,7 @@ const ActivityBuilder = (props) => {
         };
         axiosLoginAuth()
         .post("https://build-your-life.herokuapp.com/api/activities", newActivity)
-        .then(res => setActivities(res.data))
+        .then(res => setActivities([...activities, res.data]))
         .catch(err => console.log(err))
     
         
