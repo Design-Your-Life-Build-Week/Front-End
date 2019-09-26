@@ -72,21 +72,22 @@ const AddActivity = props => {
   return (
     <>
     <ActivityCards>
-      {props.activities.map(activity => (
+
+
       
-            <CardWrapper key={activity.id}>
+            <CardWrapper>
                 <TitleBox>
-                    <h2>{activity.activity}</h2>
-                    <p>{activity.description}</p>
-                    <Rating rating={activity.rating}/>
+                    <h2>{props.activities.activity_name}</h2>
+                    <p>{props.activities.reflections}</p>
+                    <Rating activities = {props.activities.rating}/>
                 </TitleBox>
                 <TitleBox>
-                    <p>{props.text}</p>
+                    <p>{props.activities.text}</p>
                     <CardButton onClick={editCard}>Edit</CardButton>
                     <CardButton onClick={deleteCard}>Delete</CardButton>
                 </TitleBox>
             </CardWrapper>
-      ))}
+    
       </ActivityCards>
           
           

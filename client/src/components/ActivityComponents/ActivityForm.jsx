@@ -51,20 +51,27 @@ color: ${ButtonFont};
 `
 
 const ActivityForm = props => {
+
   const [activity, setActivity] = useState({
     activity: "",
     description: "",
-    rating: ""
+    rating: "",
+    categories_id: ""
   });
   const handleChanges = event => {
     setActivity({ ...activity, [event.target.name]: event.target.value });
-    console.log(activity);
+    console.log("name", event.target.name)
   };
   const submitForm = event => {
     event.preventDefault();
     props.addNewActivity(activity);
+<<<<<<< HEAD
     setActivity({ activity: "", description: "", rating: "" });
   }
+=======
+    setActivity({ activity: "", description: "", rating: "", categories_id: "" });
+  };
+>>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
 
   
   return (
@@ -100,6 +107,21 @@ const ActivityForm = props => {
                       value={activity.rating}
                   />
                 </LabelOverInput>
+
+
+                  <select name="categories_id" value={activity.categories_id} onChange={handleChanges}>
+                  <option>Select</option>
+
+                    <option value="1">Physical</option>
+                    <option value="2">Personal</option>
+                    <option value="3">Work</option>
+                    <option value="4">Family</option>
+                    <option value="5">Financial</option>
+                    <option value="6">Mind</option>
+                    <option value="7">Spiritual</option>
+                  </select>
+             
+         
               </ActivityDiv>
               <Button type="submit">Add Activity</Button>
 

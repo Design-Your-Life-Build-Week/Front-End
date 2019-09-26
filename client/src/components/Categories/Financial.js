@@ -79,7 +79,7 @@ const Financial = props => {
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                <h2>{props.category.name}</h2>
+                <h2>Financial</h2>
             </TitleBox>
             
         </CardWrapper>

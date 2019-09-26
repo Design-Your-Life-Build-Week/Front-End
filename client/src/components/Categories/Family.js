@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
-
+import Categories from '../Categories';
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+import {Link} from "react-router-dom";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -74,28 +77,55 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Family = props => {
-    useEffect(() => {
+    const [activities, setActivities] = useState([]);
+    
+     const getData = () => {
         axiosLoginAuth()
+<<<<<<< HEAD
             .get("https://build-your-life.herokuapp.com/api/activities")
             .then(res => {
                 console.log(res.data[0].categories_id)
                 console.log(res.data)
                 const categoryActivities = res.data
+=======
+        .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => {
+            setActivities(res.data.filter((i)=> {
+                if (i.categories_id === 3) {
+                    return (i)
+                }
+            }))
+           
+         
+>>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
             })
             .catch(err => console.log(err))
             
+     }
+    useEffect(() => {
+       getData();
     }, [])
+<<<<<<< HEAD
     
+=======
+
+    console.log(activities)
+   
+
+>>>>>>> ddbce33d8bf4081584df95c3a911eeb4e4dab4ed
     
     return (
         <MoveCard>
+        <h2>Family</h2>
         <CardWrapper>
             <TitleBox>
-                <h2>Family</h2>
+   
+            {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+
             </TitleBox>
             
         </CardWrapper>
-        </MoveCard>
+        </MoveCard> 
     )
 }
 
