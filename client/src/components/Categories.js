@@ -41,7 +41,7 @@ const Categories = () => {
             <div>
                 <H1>Your Categories</H1> 
                 <Physical />
-                <Healt />
+                <Health />
                 <Family /> 
                 <Spiritual />
                 <Personal />
