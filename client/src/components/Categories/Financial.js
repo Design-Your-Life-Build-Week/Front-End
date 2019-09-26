@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-
-
+import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
+import { ActivitiesContext } from "../../contexts/ActivitiesContext";
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
@@ -75,16 +77,51 @@ const ButtonBox = styled.div`
 /*========DEFAULT FUNCTION========*/
 
 const Financial = props => {
-    return (
-        <MoveCard>
-        <CardWrapper>
-            <TitleBox>
-                <h2>Financial</h2>
-            </TitleBox>
-            
-        </CardWrapper>
-        </MoveCard>
-    )
+    const [activities, setActivities] = useState([]);
+    
+    const getData = () => {
+       axiosLoginAuth()
+       .get("https://build-your-life.herokuapp.com/api/activities")
+       .then(res => {
+           setActivities(res.data.filter((i)=> {
+               if (i.categories_id === 3) {
+                   console.log("filteredstuff", i)
+                   return (i)
+               }
+           }))
+        
+           })
+           .catch(err => console.log(err))
+           
+    }
+       useEffect(() => {
+           axiosLoginAuth()
+           .get("https://build-your-life.herokuapp.com/api/activities")
+           .then(res => {
+              setActivities(res.data)
+               })
+               .catch(err => console.log(err))
+       }, [])
+
+   console.log("props.activities", props.activities)
+  
+
+   
+   return (
+       <ActivitiesContext.Provider value={{activities, getData }}>
+           <MoveCard>
+           <h2>Financial</h2>
+           <CardWrapper>
+               <TitleBox>
+               <ActivityBuilder activities={activities}/>
+               <AddActivity />
+
+               </TitleBox>
+               
+           </CardWrapper>
+           </MoveCard> 
+       </ActivitiesContext.Provider>
+   )
 }
 
 export default Financial;
