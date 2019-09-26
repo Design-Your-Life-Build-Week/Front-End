@@ -114,8 +114,8 @@ const Family = props => {
             <h2>Family</h2>
             <CardWrapper>
                 <TitleBox>
-    
-                {activities && activities.map((activities => <ActivityBuilder key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+                <ActivityBuilder activities={activities}/>
+                {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
 
                 </TitleBox>
                 
