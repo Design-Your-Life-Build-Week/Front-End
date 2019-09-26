@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ActivityForm from './ActivityForm';
 import AddActivity from './AddActivity';
 // import SavedActivities from './SavedActivities';
@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, LoginColor, ButtonHover, ButtonHoverFont } from '../Styling'
 import axios from 'axios';
 import { axiosLoginAuth } from "../../utils/axiosLoginAuth";
+import { ActivitiesContext } from '../../contexts/ActivitiesContext';
 
 
 
@@ -39,8 +40,10 @@ border-radius:5px;
 color:ghostwhite;
 `
 const ActivityBuilder = (props) => {
-    const [activities, setActivities ] = useState([props.activities])
-  console.log(activities)
+    const context = useContext(ActivitiesContext)
+    console.log("contextCheck", context)
+    const [ activities, setActivities ] = useState(context);
+    console.log("contextCheck", activities)
 
     const addNewActivity = activity => {
         const newActivity = {
@@ -56,7 +59,7 @@ const ActivityBuilder = (props) => {
             setActivities([...activities, res]);
             props.getData()
         })
-
+        
         .catch(err => console.log(err))
     
         
