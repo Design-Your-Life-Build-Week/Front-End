@@ -5,6 +5,8 @@ import { ButtonBackground, ButtonFont, ButtonHover,
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from '../Styling';
 import Categories from '../Categories';
+import AddActivity from '../ActivityComponents/AddActivity';
+import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
 
 /*
 * RETURNS A CARD OF EACH ACTIVITY
@@ -76,18 +78,7 @@ const ButtonBox = styled.div`
 
 const Family = props => {
     const [activities, setActivities] = useState();
-    const getActivities = async () => {
-        let res = await axiosLoginAuth()
-        .get("https://build-your-life.herokuapp.com/api/activities");
-
-        let data = res.data.filter((i)=> {
-            if (i.categories_id == 3) {
-                return (i)
-            }
-        })
-       
-        setActivities(data)
-    }
+    
      
     useEffect(() => {
         axiosLoginAuth()
@@ -107,12 +98,13 @@ const Family = props => {
             .catch(err => console.log(err))
             
     }, [])
-    console.log("activities", activities)
+
     return (
         <MoveCard>
+        <h2>Family</h2>
         <CardWrapper>
             <TitleBox>
-                <h2>{activities && activities.map((i => i.activity_name))}</h2>
+            {activities && activities.map((activities => <AddActivity key={activities.id} activities={activities} /> ))}
             </TitleBox>
             
         </CardWrapper>

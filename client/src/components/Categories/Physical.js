@@ -80,7 +80,7 @@ const Physical = props => {
         <MoveCard>
         <CardWrapper>
             <TitleBox>
-                {/* <h2>{props.category.name && props.category.name}</h2> */}
+                <h2>Physical</h2>
             </TitleBox>
             
         </CardWrapper>

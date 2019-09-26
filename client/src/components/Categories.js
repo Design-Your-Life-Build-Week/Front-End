@@ -56,13 +56,27 @@ const Categories = () => {
     return (
             <div>
                 <H1>Your Categories</H1> 
-                <Physical category={physical} />
-                {/* <Family category={family} /> 
-                <Spiritual category={spititual} />
+                <Link>
+                    <Physical category={physical} />
+                </Link>
+                <Link to="/family">
+                    <Family category={family} /> 
+                </Link>
+                <Link>
+                    <Spiritual category={spititual} />
+                </Link>
+                <Link>
                 <Personal category={personal} />
+                </Link>
+                <Link>
                 <Mind category={mind} />
+                </Link>
+                <Link>
                 <Work category={work}/>
-                <Financial category={financial} />    */}
+                </Link>
+                <Link>
+                <Financial category={financial} />   
+                </Link>
             </div>
 
         )
