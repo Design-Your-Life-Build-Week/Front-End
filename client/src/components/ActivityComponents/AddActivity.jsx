@@ -10,9 +10,9 @@ import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
 
 
 const ActivityCards = styled.div `
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-evenly
+display:flex;
+justify-content:space-around
+
 
 `
 
