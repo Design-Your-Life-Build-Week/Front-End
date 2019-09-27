@@ -74,18 +74,18 @@ const Financial = props => {
     const [activities, setActivities] = useState([]);
     
     const getData = () => {
-       axiosLoginAuth()
-       .get("https://build-your-life.herokuapp.com/api/activities")
-       .then(res => {
-           setActivities(res.data.filter((i)=> {
-               if (i.categories_id === 4) {
-                   console.log("filteredstuff", i)
-                   return (i)
-               }
-           }))
-           })
-           .catch(err => console.log(err))
-           
+    axiosLoginAuth()
+    .get("https://build-your-life.herokuapp.com/api/activities")
+    .then(res => {
+        setActivities(res.data.filter((i)=> {
+            if (i.categories_id === 3) {
+                console.log("filteredstuff", i)
+                return (i)
+            }
+        }))
+        
+        })
+        .catch(err => console.log(err))       
     }
 
     useEffect(() => {
@@ -97,11 +97,9 @@ const Financial = props => {
             .catch(err => console.log(err))
     }, [])
 
-   console.log("props.activities", props.activities);
-   
-   return (
-       <ActivitiesContext.Provider value={{activities, getData }}>
-           <MoveCard>
+    return (
+        <ActivitiesContext.Provider value={{activities, getData }}>
+            <MoveCard>
                 <h2>Financial</h2>
                 <CardWrapper>
                     <TitleBox>
@@ -109,9 +107,9 @@ const Financial = props => {
                         <AddActivity />
                     </TitleBox>
                 </CardWrapper>
-           </MoveCard> 
-       </ActivitiesContext.Provider>
-   )
+            </MoveCard> 
+        </ActivitiesContext.Provider>
+    )
 }
 
 export default Financial;

@@ -77,7 +77,7 @@ const Categories = () => {
 
     return (
             <ActivityCards>
-                <H1>Your Categories</H1> 
+                <H1>Pick A Categories</H1> 
                 <Link to="/physical">
                 <CardWrapper>Physical and Health</CardWrapper>
                 </Link>

@@ -86,9 +86,9 @@ const Health = props => {
                 return (i)
             }
         }))
-        })
-        .catch(err => console.log(err))
         
+        })
+        .catch(err => console.log(err))       
     }
 
     useEffect(() => {
@@ -100,18 +100,16 @@ const Health = props => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log("props.activities", props.activities)
-   
     return (
-        <ActivitiesContext.Provider value={{activities}}>
+        <ActivitiesContext.Provider value={{activities, getData }}>
             <MoveCard>
-            <h2>Health</h2>
-            <CardWrapper>
-                <TitleBox>
-                    <ActivityBuilder activities={activities}/>
-                    {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
-                </TitleBox>
-            </CardWrapper>
+                <h2>Health</h2>
+                <CardWrapper>
+                    <TitleBox>
+                        <ActivityBuilder activities={activities}/>
+                        <AddActivity />
+                    </TitleBox>
+                </CardWrapper>
             </MoveCard> 
         </ActivitiesContext.Provider>
     )

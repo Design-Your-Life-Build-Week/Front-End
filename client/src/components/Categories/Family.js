@@ -106,7 +106,7 @@ const Family = props => {
     return (
         <ActivitiesContext.Provider value={{activities, getData }}>
             <MoveCard>
-                <h2>Family</h2>
+                <h2>Family & Relationships</h2>
                 <CardWrapper>
                     <TitleBox>
                         <ActivityBuilder activities={activities}/>
