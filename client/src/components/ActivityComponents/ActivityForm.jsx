@@ -75,7 +75,7 @@ const ActivityForm = props => {
         <form onSubmit={submitForm}>
             <ActivityDiv>
               <LabelOverInput>
-                <Label htmlFor="title">Activity</Label>
+                <Label htmlFor="title">Activity</Label>414
                 <Input
                     id="activity"
                     type="text"
