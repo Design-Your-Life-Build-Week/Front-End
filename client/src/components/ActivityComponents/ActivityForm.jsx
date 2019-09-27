@@ -31,7 +31,7 @@ margin-top:10%;
 `
 
 const Textarea = styled.textarea `
-width:40%;
+width:100%;
 margin-bottom: 4%;
 font-size:1.5rem;
 margin: 5% 0;

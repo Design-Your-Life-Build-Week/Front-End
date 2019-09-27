@@ -25,6 +25,28 @@ const H1 = styled.h1`
     font-family: ${MainFontFamily};
 `
 
+const ActivityCards = styled.div `
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly
+;
+`
+const CardWrapper = styled.div`
+    display: flex;
+    border-radius: 6px;
+    margin: 20px;
+    width: 400px;
+    height: 200px;
+    font-family: ${MainFontFamily};
+    background-image: ${CardBackground};
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+}`;
 const Categories = () => {
     // hooks
     const [physical, setPhysical] = useState();
@@ -54,30 +76,30 @@ const Categories = () => {
     }, [])
 
     return (
-            <div>
+            <ActivityCards>
                 <H1>Your Categories</H1> 
                 <Link to="/physical">
-                    <Physical category={physical} />
+                <CardWrapper>Physical and Health</CardWrapper>
                 </Link>
                 <Link to="/family">
-                    <Family category={family} /> 
+                <CardWrapper>Family and Relationships</CardWrapper>
                 </Link>
                 <Link to="/spiritual">
-                    <Spiritual category={spititual} />
+                <CardWrapper>Spiritual</CardWrapper>
                 </Link>
                 <Link to="/personal">
-                <Personal category={personal} />
+                <CardWrapper>Personal</CardWrapper>
                 </Link>
                 <Link to="/mind">
-                <Mind category={mind} />
+                <CardWrapper>Mind</CardWrapper>
                 </Link>
                 <Link to="/work">
-                <Work category={work}/>
+                <CardWrapper>Work and Career</CardWrapper>
                 </Link>
                 <Link to="/financial">
-                <Financial category={financial} />   
+                <CardWrapper>Financial</CardWrapper>
                 </Link>
-            </div>
+            </ActivityCards>
 
         )
 }

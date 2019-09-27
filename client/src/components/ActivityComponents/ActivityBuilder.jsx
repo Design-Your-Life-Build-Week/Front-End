@@ -13,7 +13,6 @@ import { ActivitiesContext } from '../../contexts/ActivitiesContext';
 const YourActivities = styled.div `
 margin-top:-.25%;
 font-family: ${MainFontFamily};
-height:2000px;
 
 `
 const H1 = styled.h1 `
