@@ -19,6 +19,7 @@ import Work from './components/Categories/Work';
 import Health from './components/Categories/Health';
 import Personal from './components/Categories/Personal';
 import Physical from './components/Categories/Physical';
+import Financial from './components/Categories/Financial'
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
       <PrivateRoute exact path="/physical" component={Physical} />
       <PrivateRoute exact path="/spiritual" component={Spiritual} />
       <PrivateRoute exact path="/work" component={Work} />
+      <PrivateRoute exact path="/financial" component={Financial} />
+
 
 
 
