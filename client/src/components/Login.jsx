@@ -89,8 +89,6 @@ const Login = (props) => {
 
 return (
     <>
-    <NavBar/>
-
     <RegistrationBox>
         <WelcomeBack>
             <h1>Welcome<div>Back.</div></h1>

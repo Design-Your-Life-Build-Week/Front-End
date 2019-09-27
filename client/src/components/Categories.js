@@ -8,7 +8,8 @@ import {axiosLoginAuth} from "../utils/axiosLoginAuth";
 import { ButtonBackground, ButtonFont, ButtonHover, 
     ButtonHoverFont, MainFontFamily, CardBackground } 
     from './Styling';
-import LoggedInNav from "./LoggedInNav";
+
+import NavBar from './NavBar';
     
 const H1 = styled.h1`
     color:pink;
@@ -41,7 +42,6 @@ const Categories = () => {
 
     return (
         <>
-        <LoggedInNav />
             <ActivityCards>
                 <H1>Pick A Categories</H1> 
                 <Link to="/physical">

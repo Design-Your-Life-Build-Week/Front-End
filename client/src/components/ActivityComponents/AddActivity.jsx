@@ -92,7 +92,7 @@ const AddActivity = props => {
                         </TitleBox>
                         <TitleBox>
                             <p>{activity.text}</p>
-                            <CardButton onClick={editCard}>Edit</CardButton>
+                            {/* <CardButton onClick={editCard}>Edit</CardButton> */}
                             <CardButton onClick={() => deleteCard(activity.id)}>Delete</CardButton>
                         </TitleBox> 
 
