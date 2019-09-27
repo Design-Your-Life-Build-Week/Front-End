@@ -23,7 +23,6 @@ import Physical from './components/Categories/Physical';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
       <Route exact path="/" component={LandingPage} /> 
       <Route path="/register" component={Registration} />
       <Route path="/login" component={Login} />   
