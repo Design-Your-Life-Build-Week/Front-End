@@ -66,6 +66,7 @@ const ActivityForm = props => {
     event.preventDefault();
     props.addNewActivity(activity);
     setActivity({ activity: "", description: "", rating: "", categories_id: "" });
+    window.location.reload()
   };
 
   
@@ -74,7 +75,7 @@ const ActivityForm = props => {
         <form onSubmit={submitForm}>
             <ActivityDiv>
               <LabelOverInput>
-                <Label htmlFor="title">Activity</Label>
+                <Label htmlFor="title">Activity</Label>414
                 <Input
                     id="activity"
                     type="text"
