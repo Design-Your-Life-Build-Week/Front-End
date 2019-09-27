@@ -63,7 +63,9 @@ export default function NavBar() {
         color: ${ButtonHoverFont};
         }
     `;
-
+    const logout = () => {
+        localStorage.removeItem("token");
+    }
     return (
         <NavWrapper>
             <NavLink style={{textDecoration: "none"}} to="/">
@@ -78,6 +80,12 @@ export default function NavBar() {
                 </NavLink>
                 <NavLink style={{textDecoration: "none"}} to="/login">
                     <NavItem>Login</NavItem>
+                </NavLink>
+                <NavLink style={{textDecoration: "none"}} to="/categories">
+                    <NavItem>Categories</NavItem>
+                </NavLink>
+                <NavLink style={{textDecoration: "none"}}>
+                    <NavItem onClick={logout}> Log Out</NavItem>
                 </NavLink>
             </NavItemWrapper>
         </NavWrapper>

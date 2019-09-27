@@ -74,20 +74,20 @@ const ButtonBox = styled.div`
 
 const Mind = props => {
     const [activities, setActivities] = useState([]);
-   
+    
     const getData = () => {
-        axiosLoginAuth()
-        .get("https://build-your-life.herokuapp.com/api/activities")
-        .then(res => {
-            setActivities(res.data.filter((i)=> {
-                if (i.categories_id === 5) {
-                    console.log("filteredstuff", i)
-                    return (i)
-                }
-            }))
-            })
-            .catch(err => console.log(err))
-
+    axiosLoginAuth()
+    .get("https://build-your-life.herokuapp.com/api/activities")
+    .then(res => {
+        setActivities(res.data.filter((i)=> {
+            if (i.categories_id === 3) {
+                console.log("filteredstuff", i)
+                return (i)
+            }
+        }))
+        
+        })
+        .catch(err => console.log(err))       
     }
 
     useEffect(() => {
@@ -99,21 +99,19 @@ const Mind = props => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log("props.activities", props.activities)
-   
     return (
-        <ActivitiesContext.Provider value={{activities}}>
+        <ActivitiesContext.Provider value={{activities, getData }}>
             <MoveCard>
                 <h2>Mind</h2>
                 <CardWrapper>
                     <TitleBox>
                         <ActivityBuilder activities={activities}/>
-                        {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+                        <AddActivity />
                     </TitleBox>
                 </CardWrapper>
             </MoveCard> 
         </ActivitiesContext.Provider>
-   )
+    )
 }
 
 export default Mind;

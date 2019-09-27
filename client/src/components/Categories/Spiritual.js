@@ -78,17 +78,16 @@ const Spiritual = props => {
     .get("https://build-your-life.herokuapp.com/api/activities")
     .then(res => {
         setActivities(res.data.filter((i)=> {
-            if (i.categories_id === 6) {
+            if (i.categories_id === 3) {
                 console.log("filteredstuff", i)
                 return (i)
             }
         }))
         
         })
-        .catch(err => console.log(err))
-        
+        .catch(err => console.log(err))       
     }
-    
+
     useEffect(() => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
@@ -98,16 +97,14 @@ const Spiritual = props => {
             .catch(err => console.log(err))
     }, [])
 
-    console.log("props.activities", props.activities)
-   
     return (
-        <ActivitiesContext.Provider value={{activities}}>
+        <ActivitiesContext.Provider value={{activities, getData }}>
             <MoveCard>
                 <h2>Spiritual</h2>
                 <CardWrapper>
                     <TitleBox>
                         <ActivityBuilder activities={activities}/>
-                        {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
+                        <AddActivity />
                     </TitleBox>
                 </CardWrapper>
             </MoveCard> 

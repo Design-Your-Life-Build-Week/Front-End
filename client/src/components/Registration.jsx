@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 // import {axiosLoginAuth} from '../utils/axiosLoginAuth'
 import { FormBorderColor, NavColor, MainFontFamily, LoginColor, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from './Styling';
+import NavBar from './Categories/LoggedInNav';
 
 const RegistrationBox = styled.div `
 font-family: ${MainFontFamily};
@@ -97,6 +98,8 @@ const handleSubmit = event => {
     }
 
     return (
+        <>
+        <NavBar />
         <RegistrationBox>
             <MeaningfulLife>
                 <h1>Have a<ColorDiv>Meaningful</ColorDiv>Life</h1>
@@ -116,6 +119,7 @@ const handleSubmit = event => {
                 </Form>
             </LoginDiv>       
         </RegistrationBox>
+        </>
     )
     
 }
