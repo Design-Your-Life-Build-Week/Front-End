@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { axiosLoginAuth } from '../../utils/axiosLoginAuth';
+import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 
-import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 import AddActivity from '../ActivityComponents/AddActivity';
 import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
+import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 import { ButtonBackground, ButtonFont, ButtonHover, 
-    ButtonHoverFont, MainFontFamily, CardBackground } 
+    ButtonHoverFont, MainFontFamily, LoginColor, CardBackground } 
     from '../Styling';
-
+import ActivityForm from "../ActivityComponents/ActivityForm";
 /*
 * RETURNS A CARD OF EACH ACTIVITY
 */
@@ -16,27 +16,25 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 /*========STYLING========*/
 // Category Card Wrapper
 const MoveCard = styled.div`
-  display:inline-block;
 `
 const H1 = styled.h1`
     color:pink;
 `
+
 const CardWrapper = styled.div`
     display: flex;
     border-radius: 6px;
     margin: 20px;
     width: 350px;
     font-family: ${MainFontFamily};
-    background-image: ${CardBackground};
+    
 }`;
 
 // Title and Rating Wrapper
 const TitleBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
-    justify-content: space-between;
+  display:flex;
+    width: 100%;
+    
     align-items: center;
     padding: 10px;
     font-size: 1rem;
@@ -68,26 +66,50 @@ const ButtonBox = styled.div`
     height: 50px;
 `;
 
+const CreateNew = styled.button `
+
+font-size:1.25rem;
+border-radius:5px;
+background-image: ${ButtonBackground};
+color: ${ButtonFont};
+    :hover{
+        background-image: ${ButtonHover};
+        color: ${ButtonHoverFont};
+    }
+    
+`
+
+const PopDownDiv = styled.div `
+padding: 2%
+width:40%;
+margin-left:28%;
+margin-top:2%;
+background:${LoginColor};
+border-radius:5px;
+color:ghostwhite;
+`
+
 /*========DEFAULT FUNCTION========*/
 
 const Financial = props => {
     const [activities, setActivities] = useState([]);
     
     const getData = () => {
-       axiosLoginAuth()
-       .get("https://build-your-life.herokuapp.com/api/activities")
-       .then(res => {
-           setActivities(res.data.filter((i)=> {
-               if (i.categories_id === 4) {
-                   console.log("filteredstuff", i)
-                   return (i)
-               }
-           }))
-           })
-           .catch(err => console.log(err))
-           
+    axiosLoginAuth()
+    .get("https://build-your-life.herokuapp.com/api/activities")
+    .then(res => {
+        setActivities(res.data.filter((i)=> {
+            if (i.categories_id === 4) {
+                console.log("filteredstuff", i)
+                return (i)
+            }
+        }))
+        
+        })
+        .catch(err => console.log(err))
+        
     }
-
+    
     useEffect(() => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
@@ -97,21 +119,47 @@ const Financial = props => {
             .catch(err => console.log(err))
     }, [])
 
-   console.log("props.activities", props.activities);
+    console.log("props.activities", props.activities)
+
+    const addNewActivity = activity => {
+        const newActivity = {
+            activity_name: activity.activity,
+            reflections: activity.description,
+            starRating: activity.rating,
+            categories_id: activity.categories_id
+        };
+        axiosLoginAuth()
+        .post("https://build-your-life.herokuapp.com/api/activities", newActivity)
+        .then(res => {
+            console.log("add RES", res)
+            setActivities([...activities, res]);
+            props.getData()
+        })
+        
+        .catch(err => console.log(err))
+    
+        
+    };
    
-   return (
-       <ActivitiesContext.Provider value={{activities, getData }}>
-           <MoveCard>
+    const [showText, setShowText] = useState(false);
+
+    return (
+        <ActivitiesContext.Provider value={{activities}}>
+            <MoveCard>
                 <h2>Financial</h2>
+                <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
+        {showText && <PopDownDiv>
+            <ActivityForm addNewActivity={addNewActivity}/>
+        </PopDownDiv>}  
                 <CardWrapper>
                     <TitleBox>
                         <ActivityBuilder activities={activities}/>
-                        <AddActivity />
+                        {activities.map((activities => <AddActivity key={activities.activity_name} activities={activities} getData={getData}  /> ))}
                     </TitleBox>
                 </CardWrapper>
-           </MoveCard> 
-       </ActivitiesContext.Provider>
-   )
+            </MoveCard> 
+        </ActivitiesContext.Provider>
+    )
 }
 
 export default Financial;

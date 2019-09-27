@@ -56,6 +56,8 @@ const CardButton = styled.button`
     }
 `;
 
+
+
 /*========SUPPORTING FUNCTIONS========*/
 // function that allows user to edit card
 function editCard() {

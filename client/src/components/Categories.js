@@ -25,6 +25,10 @@ const H1 = styled.h1`
     font-family: ${MainFontFamily};
 `
 
+const LinkDiv = styled.div `
+    font-size:30px;
+`
+
 const Categories = () => {
     // hooks
     const [physical, setPhysical] = useState();
@@ -54,30 +58,30 @@ const Categories = () => {
     }, [])
 
     return (
-            <div>
+            <LinkDiv>
                 <H1>Your Categories</H1> 
                 <Link to="/physical">
-                    <Physical category={physical} />
+                    <p>Physical</p>
                 </Link>
                 <Link to="/family">
-                    <Family category={family} /> 
+                    <p>Family</p>                
                 </Link>
                 <Link to="/spiritual">
-                    <Spiritual category={spititual} />
+                    <p>Spiritual</p>
                 </Link>
                 <Link to="/personal">
-                <Personal category={personal} />
+                <p>Personal</p>
                 </Link>
                 <Link to="/mind">
-                <Mind category={mind} />
+                <p>Mind</p>
                 </Link>
                 <Link to="/work">
-                <Work category={work}/>
+                <p>Work</p>
                 </Link>
                 <Link to="/financial">
-                <Financial category={financial} />   
+                <p>Financial</p>   
                 </Link>
-            </div>
+            </LinkDiv>
 
         )
 }

@@ -13,14 +13,13 @@ import { ActivitiesContext } from '../../contexts/ActivitiesContext';
 const YourActivities = styled.div `
 margin-top:-.25%;
 font-family: ${MainFontFamily};
-height:2000px;
 
 `
 const H1 = styled.h1 `
 
 `
 const CreateNew = styled.button `
-margin:.5% 0 2%;
+
 font-size:1.25rem;
 border-radius:5px;
 background-image: ${ButtonBackground};
@@ -34,8 +33,7 @@ color: ${ButtonFont};
 
 const PopDownDiv = styled.div `
 padding-bottom: 2%
-width:50%;
-margin: 0 25%;
+width:100%;
 background:${LoginColor};
 border-radius:5px;
 color:ghostwhite;
@@ -73,10 +71,10 @@ return (
     <YourActivities>
         
         <H1>{props.activities.activity_name}</H1>
-        <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
+        {/* <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
         {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
-        </PopDownDiv>}  
+        </PopDownDiv>}   */}
         {/* <SavedActivities/> */}
         {/* <AddActivity activities={props.activities}/> */}
       

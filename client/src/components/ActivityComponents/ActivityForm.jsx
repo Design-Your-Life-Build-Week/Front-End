@@ -3,40 +3,40 @@ import styled from 'styled-components';
 import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
 
 
-const ActivityFormDiv = styled.div `
-font-family: ${MainFontFamily};
-font-size:62.5%;
+const ActivityFormDiv = styled.div ``
+// font-family: ${MainFontFamily};
+// font-size:62.5%;
 
-`
+
 const LabelOverInput = styled.div `
 display:flex;
-flex-direction:column;
-width:100%;
-align-items:center;
+flex-direction:column;`
+// width:100%;
+// align-items:center;
 
-`
 
-const ActivityDiv = styled.div `
-display:flex;
-`
-const Input = styled.input `
-width:40%
-font-size:1.5rem;
-margin: 5% 0;
-`
+
+const ActivityDiv = styled.div ``
+// display:flex;
+// 
+// const Input = styled.input `
+// width:40%
+// font-size:1.5rem;
+// margin: 5% 0;
+
 
 const Label = styled.label `
-font-size:1.5rem;
-margin-top:10%;
-`
+font-size:1.5rem;`
+// margin-top:10%;
 
-const Textarea = styled.textarea `
-width:40%;
-margin-bottom: 4%;
-font-size:1.5rem;
-margin: 5% 0;
 
-`
+const Textarea = styled.textarea ``
+// width:40%;
+// margin-bottom: 4%;
+// font-size:1.5rem;
+// margin: 5% 0;
+
+
 const Button = styled.button `
 font-size:1.25rem;
 border-radius:5px;
@@ -46,9 +46,11 @@ color: ${ButtonFont};
     :hover{
         background-image: ${ButtonHover};
         color: ${ButtonHoverFont};
-    }
-    
-`
+    `
+
+const Input = styled.input `
+    `
+
 
 const ActivityForm = props => {
 
@@ -75,7 +77,7 @@ const ActivityForm = props => {
         <form onSubmit={submitForm}>
             <ActivityDiv>
               <LabelOverInput>
-                <Label htmlFor="title">Activity</Label>414
+                <Label htmlFor="title">Activity</Label>
                 <Input
                     id="activity"
                     type="text"
