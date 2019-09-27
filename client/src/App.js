@@ -8,7 +8,11 @@ import Family from './components/Categories/Family';
 import Financial from './components/Categories/Financial';
 import ActivityBuilder from './components/ActivityComponents/ActivityBuilder'
 import ActivityList from './components/ActivityList';
-
+import Physical from './components/Categories/Physical';
+import Spiritual from './components/Categories/Spiritual';
+import Personal from './components/Categories/Personal';
+import Mind from './components/Categories/Mind';
+import Work from './components/Categories/Work';
 
 import {Route} from 'react-router-dom';
 import PrivateRoute from './utils/PrivateRoute';
@@ -24,7 +28,12 @@ function App() {
       <Route path="/register" component={Registration} />
       <Route path="/login" component={Login} />   
       <PrivateRoute exact path="/categories" component={Categories} />
-      
+      <PrivateRoute exact path="/physical" component={Physical} />
+      <PrivateRoute exact path="/spiritual" component={Spiritual} />
+      <PrivateRoute exact path="/personal" component={Personal} />
+      <PrivateRoute exact path="/mind" component={Mind} />
+      <PrivateRoute exact path="/work" component={Work} />
+
       <PrivateRoute exact path="/family" component={Family} />
       <PrivateRoute exact path="/financial" component={Financial} />
       <PrivateRoute path="/add" component={AddActivity} />
