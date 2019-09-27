@@ -72,10 +72,10 @@ return (
     <YourActivities>
         
         <H1>{props.activities.activity_name}</H1>
-        <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
+        {/* <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
         {showText && <PopDownDiv>
             <ActivityForm addNewActivity={addNewActivity}/>
-        </PopDownDiv>}  
+        </PopDownDiv>}   */}
         {/* <SavedActivities/> */}
         {/* <AddActivity activities={props.activities}/> */}
       
