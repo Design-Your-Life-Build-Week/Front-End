@@ -78,6 +78,7 @@ function deleteCard(id) {
 const AddActivity = props => {
     const {activities } = useContext(ActivitiesContext);
 
+    
     console.log(activities)
   return (
     <>
