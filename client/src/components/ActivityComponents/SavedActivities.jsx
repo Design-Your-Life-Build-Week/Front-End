@@ -5,7 +5,6 @@ import { ButtonBackground, ButtonFont, ButtonHover,
 import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 import Rating from '../Rating';
-import Categories from "../Categories";
 
 
 const ActivityCards = styled.div `

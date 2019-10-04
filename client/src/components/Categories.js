@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import dummData
 import { Link } from "react-router-dom";
 
 
 import styled from 'styled-components';
-import {axiosLoginAuth} from "../utils/axiosLoginAuth";
-import { ButtonBackground, ButtonFont, ButtonHover, 
-    ButtonHoverFont, MainFontFamily, CardBackground } 
+import { MainFontFamily, CardBackground } 
     from './Styling';
-
-import NavBar from './NavBar';
     
 const H1 = styled.h1`
     color:pink;

@@ -84,7 +84,7 @@ export default function NavBar() {
                 <NavLink style={{textDecoration: "none"}} to="/categories">
                     <NavItem>Categories</NavItem>
                 </NavLink>
-                <NavLink style={{textDecoration: "none"}}>
+                <NavLink style={{textDecoration: "none"}} to="/">
                     <NavItem onClick={logout}> Log Out</NavItem>
                 </NavLink>
             </NavItemWrapper>

@@ -3,12 +3,10 @@ import styled from 'styled-components';
 import {axiosLoginAuth} from '../../utils/axiosLoginAuth';
 
 import { ButtonBackground, ButtonFont, ButtonHover, 
-    ButtonHoverFont, MainFontFamily, LoginColor, CardBackground } 
+    ButtonHoverFont, MainFontFamily, LoginColor } 
     from '../Styling';
-import Categories from '../Categories';
 import AddActivity from '../ActivityComponents/AddActivity';
 import ActivityBuilder from '../ActivityComponents/ActivityBuilder';
-import {Link} from "react-router-dom";
 import { ActivitiesContext } from "../../contexts/ActivitiesContext";
 import ActivityForm from "../ActivityComponents/ActivityForm";
 
@@ -18,11 +16,7 @@ import ActivityForm from "../ActivityComponents/ActivityForm";
 
 /*========STYLING========*/
 // Category Card Wrapper
-const MoveCard = styled.div`
-`
-const H1 = styled.h1`
-    color:pink;
-`
+
 
 const CardWrapper = styled.div`
     display: flex;
@@ -45,29 +39,6 @@ const TitleBox = styled.div`
     
 `;
 
-// Edit and Delete Button Styling
-const CardButton = styled.button`
-    background-image: ${ButtonBackground};
-    color: ${ButtonFont};
-    font-size: 1.0rem;
-    text-align: center;
-    border: none;
-    padding: 5px;
-    border-radius: 8px;
-    margin: 5px;
-    width: 100px;
-    :hover{
-        background-image: ${ButtonHover};
-        color: ${ButtonHoverFont};
-    }
-`;
-
-//Box for Buttons
-const ButtonBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    height: 50px;
-`;
 
 const CreateNew = styled.button `
 
@@ -92,17 +63,12 @@ border-radius:5px;
 color:ghostwhite;
 `
 
-const NewActivity = styled.div `
-
-`
-
-
 
 /*========DEFAULT FUNCTION========*/
 
 const Family = props => {
     const [activities, setActivities] = useState([]);
-    
+
     const getData = () => {
     axiosLoginAuth()
     .get("https://build-your-life.herokuapp.com/api/activities")
@@ -121,6 +87,8 @@ const Family = props => {
     useEffect(() => {
         axiosLoginAuth()
         .get("https://build-your-life.herokuapp.com/api/activities")
+        .then(res => console.log(res.data.user_id))
+
         .then(res => {
             setActivities(res.data)
             })
@@ -152,7 +120,7 @@ const Family = props => {
     
     return (
         <ActivitiesContext.Provider value={{activities, getData }}>
-            <MoveCard>
+            <div>
                 <h2>Family & Relationships</h2>
                 <CreateNew onClick={() => setShowText(!showText)}>Create New</CreateNew>  
         {showText && <PopDownDiv>
@@ -162,12 +130,12 @@ const Family = props => {
                     <TitleBox>
                         
                             <ActivityBuilder activities={activities}/>
-                        <NewActivity>
+                        <div>
                             <AddActivity />
-                        </NewActivity>
+                        </div>
                     </TitleBox>
                 </CardWrapper>
-            </MoveCard> 
+            </div> 
         </ActivitiesContext.Provider>
     )
 }

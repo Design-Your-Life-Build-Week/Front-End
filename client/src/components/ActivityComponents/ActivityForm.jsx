@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { MainFontFamily, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
+import { ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from '../Styling'
 
 
 const ActivityFormDiv = styled.div ``

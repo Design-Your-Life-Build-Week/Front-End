@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-// import {axiosLoginAuth} from '../utils/axiosLoginAuth'
 import { FormBorderColor, NavColor, MainFontFamily, LoginColor, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from './Styling';
-import NavBar from './NavBar';
 
 const RegistrationBox = styled.div `
 font-family: ${MainFontFamily};

@@ -1,5 +1,3 @@
-import React from 'react'; 
-
 // Nav Bar Colors
 export const NavColor = 'linear-gradient(to right, #FDDFCB, #FFDBFE)';
 

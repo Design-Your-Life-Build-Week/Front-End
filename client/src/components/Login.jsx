@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { FormBorderColor, MainFontFamily, LoginColor, ButtonBackground, ButtonFont, ButtonHover, ButtonHoverFont } from './Styling';
-import NavBar from "../components/NavBar";
 const RegistrationBox = styled.div `
 font-family: ${MainFontFamily};
 display:flex;
